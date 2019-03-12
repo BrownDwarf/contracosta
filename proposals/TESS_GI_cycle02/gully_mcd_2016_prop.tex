@@ -1,0 +1,151 @@
+\documentclass[11pt,aas_macros]{article}
+\usepackage{graphicx}    
+\oddsidemargin 0pt
+\textwidth 6.5in
+\topmargin -0.65in
+\textheight 9.25in
+
+\usepackage{aas_macros}
+\usepackage[comma,authoryear]{natbib}
+\bibpunct{(}{)}{;}{a}{}{;}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\bibliographystyle{plainnat}
+
+
+% This simple template will produce text files which conform with the
+% McDonald Observatory format requirements.  
+%
+% This template can be used for a single section by just uncommenting
+% the header for that section or for all needed sections in one 
+% document by uncommenting all the headers and the newpage commands.
+% The text is then entered in that section.
+%
+% The science justification is limited to 1 page of text plus 1 page
+% of figures and/or references (the user must control this limit).
+% The results from previous observing time is also limited to 1 page.
+% The other sections are not limited in length but should not
+% be used to add science justification.
+
+\input{mgs_setup}
+
+
+\begin{document}
+
+\begin{center}{\bf Science Justification}\end{center}
+
+Stars form by direct gravitational collapse of molecular cloud cores.  By $\sim$1 Myr the envelopes of gas and dust have usually accreted onto the star, classical \emph{T-Tauri} stars).  By $\sim$3-10 Myr the circumstellar disks are usually gone (Class III, weak-lined \emph{T-Tauri} stars).  At some time in this process, gas giant planets form.  Observations of young stars between 0 and 10 Myr anchor the overall ``cartoon picture'' understanding of star and planet formation.  
+
+The understanding of the process is incomplete.  Measurements for intrinsic stellar properties---luminosity, effective temperature, surface gravity---are known only coarsely.  Their uncertainties flow down to uncertainties in the fundamental properties mass and age, which are estimated from positions on pre main-sequence HR diagrams (\emph{c.f} Figure \ref{fig:gull}).
+
+For a single presumably coeval stellar cluster, the pre main-sequence HR diagrams exhibit large ($\delta t_{\ast} \sim t_{\ast}$) apparent spreads in age \citep[e.g.][]{2011A&A...534A..83R}. The large spreads in these pre main-sequence HR diagrams is controversial: some take it as evidence for intrinsic age spreads, some take it as evidence for non static accretion history \citep{2009ApJ...702L..27B, 2010ARA&A..48..581S}.  
+
+Still others take the large apparent age spreads in pre main-sequence HR diagrams as evidence for the limited physics included in the pre main-sequence evolutionary model isochrones.  Most modern evolutionary models do not yet include the effects of starspots or magnetic fields, despite observations betraying their presence, \emph{e.g.} optical monitoring and Zeeman doppler imaging \citep{2008A&A...479..827G,2014MNRAS.444.3220D}.  
+
+Sunspots are probably responsible for biases in stellar effective temperatures derived by different methods.  For example, the APOGEE spectrograph ($1.5-1.70 \;\mu$m at $R=22,500$) measured effective temperatures for 3493 young stars finding offsets in $\teff$ of typically 200$-$500 K and as high as 1000 K compared to previous studies \citep{2014ApJ...794..125C}.  Low resolution optical spectroscopy shows a typical spread of 200 K in the spectral type-to-effective-temperature conversion scale \citep{2014ApJ...786...97H}.
+
+The importance of starspots needs to be empirically evaluated to assess systematic biases of pre-main sequence stellar evolutionary models.
+
+In this proposal, we aim to directly measure the effect of starspots on derived stellar parameters.  Starspot characterization was identified as the most important direction for evolutionary model improvement\footnote{alongside magnetic field characterization} at the recent IAU Symposium 314, ``Young Stars \& Planets Near the Sun'' (for example, see \citet{2015ApJ...807..174S} and \citet{2015arXiv150706460F}).  Specifically, stellar evolution models including the effect of starspots can make a coeval 10 Myr population exhibit apparent age spreads of 3$-$10 Myr, with derived masses biased towards lower masses.  The observations of sunspots are lagging behind the theory.  In the Section ``Results from Previous Observing Time at McDonald'', we demonstrate that IGRINS is uniquely suited to constrain the areal coverage fraction and temperature of starspots.  The proposed work will expand the sample from 1 source to $N\sim10$ sources.
+
+The proposed research will address a key question posed by the Astro2010 Decadal Review Panel on Planetary Systems and Star Formation: ``What Is the Origin of the Stellar Mass Function?''.  Specifically, this work will directly address the bullet point ``More investment in theoretical pre-main sequence evolutionary tracks and their calibration''.
+
+The proposed research has notable side benefits.  In the first life cycle of the data we will focus on starspots, but not magnetic fields, due to the enhanced analysis complexity.  The data can be repurposed to measure magnetic fields through Zeeman broadening.  The spectra of diskless young stars will also serve as perfect comparison sources for ongoing research to measure disk excess emission through photospheric line veiling.  Other discovery space will be available, since our sources have abundant auxiliary data from \emph{K2} cycle 2 and \emph{Spitzer}, among others.
+
+
+\newpage
+\begin{center}{\bf Description of Observations \& Justification of Exposure Times}
+\end{center}
+
+We propose to acquire IGRINS observations of 15 Class III young stellar objects towards \emph{Ophiuchus} and \emph{Upper Scorpius} selected based on their \emph{K2} cycle 2 variability and \emph{lack of} disk excess emission from WISE.  These are all point sources, and should be observed in a typical ABBA nod pattern to facilitate sky subtraction.  The Table below lists the target EPIC Identifier, 2MASS Identifier, Peak-to-valley light curve amplitude variation, an estimated rotation period in days, H-band magnitude, and estimated total exposure time in minutes.  \\
+
+\begin{tabular}{cccccc}
+\hline
+& & \multicolumn{2}{c}{\emph{K2} data} \\
+\cline{3-4}
+EPIC ID & 2MASS ID & LC Amp. & Period & $H$ & Exp. time \\
+  &   & P$-$V \% & \emph{d} & \emph{mag} & \emph{m} \\
+\hline
+204876697 & 2MASS J16080141$-$2027416 & 20  &  	9	& 9.5	 &   20  \\
+203785905 & 2MASS J16281385$-$2456113 & 15  &  	10	& 10.3   & 	20  \\
+203908611 & 2MASS J16241586$-$2427352 & 15  &  	2.5	& 9.6	 &   20  \\
+204264641 & 2MASS J16140211$-$2301021 & 20  &  	3	& 8.8	 &   2  \\
+204566404 & 2MASS J16354836$-$2148396 & 30  &  	2	& 8.6	 &   2  \\
+205034491 & 2MASS J16115626$-$1943229 & 15  &  	7	& 10.1   & 	20  \\
+205154017 & 2MASS J16064385$-$1908056 & 20  &  	7	& 9.4	 &   20  \\
+205164400 & 2MASS J16093378$-$1904562 & 15  &  	14	& 10.1   & 	20  \\
+205483258 & 2MASS J16232454$-$1717270 & 23  &  	5	& 9.9	 &   20  \\
+203440253 & 2MASS J16252883$-$2607538 &  2  &   7	& 10.1   & 	20  \\
+203710077 & 2MASS J15554883$-$2512240 &  2  &   4	& 8.4	 &   2  \\
+204330922 & 2MASS J16273956$-$2245230 &  3  &   5	& 8.3	 &   2  \\
+204519031 & 2MASS J16004056$-$2200322 &  3  &   2.5	& 8.5	 &   2  \\
+204895521 & 2MASS J16064751$-$2022322 &  2  &   7	& 10.1   & 	20  \\
+205117205 & 2MASS J16101473$-$1919095 &  2  &   7	& 10.3   & 	20  \\
+\hline
+\end{tabular}
+
+\hfill \break
+
+The target list was assembled in the following way.  We required little or no mid-infrared excess by selecting WISE color $W1-W3<0.9$.  We required G, K, or M spectral types, and $H-$ and $K-$ band magnitudes less than 11.  We visually inspected the K2 cycle 2 light curves of candidates, selecting sources into two groups: those with above average sinusoidal variability, and those with below average sinusoidal variability (\emph{c.f.} Figure \ref{fig:tiger}).  We defined the average variability as 5\%, which is the interquartile range of $K2$ cycle 2 light curves\footnote{We used the \citet{2014PASP..126..948V} light curves, which still contain some instrumental artifacts. So the average variability is probably slightly overestimated.} of 1658 young stellar objects or candidate young stellar objects towards \emph{Ophiuchus} or \emph{Upper Scorpius}.  Most sources have been vetted for multiplicity via non-redundant aperture masking or high contrast imaging.  
+
+The exposure time was estimated from the $K-$band magnitude scaling relation available on the IGRINS wiki, based on a desired signal-to-noise ratio $S/N \sim$ 100, assuming ABBA nod quads of 300 or 30 seconds each.  The desired $S/N$ stems from our experience fitting two-component photosphere starspot models that exhibit deviations from single component photospheres at the few percent level.  Our analysis method employs \emph{full spectrum fitting}, leveraging \emph{all $N\sim10,000$ of the IGRINS spectral channels}.  A non-detection of a two-component photosphere will still provide a useful upper limit to the relative areal coverage and temperature contrast of starspots.
+
+The total exposure time requested is about 3.5 hours if all sources are observed with a single epoch.  We will also acquire A0V standard stars for telluric absorption correction.  These will add about 1 hour of overhead per night.  Assuming an observing efficiency of about 70\% (for target acquisition) we are requesting 7 hours of observing time.  
+
+
+%\newpage
+\begin{center}{\bf Description \& Justification of Special Constraints}\end{center}
+
+\emph{Ophiuchus} and \emph{Scorpius} are above 2 airmasses for over 2 hours per night in Trimester 2.  All the sources are centered around Right Ascension of about 16 hours, so we are requesting half-nights around $16^h$ local sidereal time-- early morning in April to late evening in July.
+
+For some of the high-variability sources with favorable periods and phases, we are also requesting multi-epoch observations.  Specifically, we seek spectrum acquisition near the maximum and minimum phases in the light curve, where the effect of starspot presence or absence will be extremized.  We will leverage LCOGT and other ground-based photometric monitoring facilities to predict the phase of variability leading up to IGRINS observations.  Because of the short periods (2-10 days), these multi-epoch observations could be accomplished at the beginning and ending of, say, a 2-4 half-night observing run.  So no special scheduling constraint should be necessary.  For the most flexibility, the multi-epoch observations could be taken in an unofficial queue style fashion, in concert with the flexible needs of other IGRINS observers.  These multi-epoch observations could be accomplished in one additional half-night, or spread out over a week of a mini-queue mode.
+
+
+\newpage
+\begin{center}{\bf Results from Previous Observing Time at McDonald}\end{center}
+
+On November 15, 2015 we acquired IGRINS miniqueue observations of LkCa4, a weak-lined \emph{T-Tauri} star.  We targeted this source for its likelihood of large areal coverage of starspots, as evinced by large-amplitude photometric variability  detected in $BVRI$ bands.  Its period is 3.37$\pm$0.01 days \citep{1993AJ....106.1608V,1994IBVS.4042....1G}.  Recent optical spectro-polarimetry showed evidence for hot or cool starspots covering an estimated $25\%$ of the stellar surface \citep{2014MNRAS.444.3220D}.  The source has little or no accretion ($\log{\dot M} < 8.1$), no detection of mid-infrared nor mm excess, and no stellar companion, so its spectrum should be devoid of complicating factors like near-IR excess veiling and accretion excess.  This source is the ideal candidate for direct measurement of two-temperature photosphere due to starspots.
+
+We combined our IGRINS spectroscopy with existing ESPaDOnS panchromatic optical echelle spectra to provide 88 spectral orders between 5100 and 25000 \AA.  Our analysis procedure involves fitting the entire spectrum with pre-computed stellar model grids \citep{2013A&A...553A...6H}, and employing a new flexible likelihood function for spectroscopic inference \citep{2015ApJ...812..128C}.  The existing implementation \emph{simultaneously} fits both the intrinsic stellar parameters, $\vt_{\ast} = \{\teff, \logg, \Z \}$, and extrinsic stellar parameters, $\vt_{\rm ext} = \{\sigma_v, \vsini, v_r, \Omega, A_V\}$, with all $N_{\mathrm{ord}}$ spectral orders sharing the same stellar parameters\footnote{The implementation \emph{also} simultaneously fits a small-amplitude polynomial to each spectral order to adjust for slight imperferfections in the continuum shape left over from the blaze correction in the IGRINS pipeline.  The coefficients of the polynomials are treated as nuisance parameters.  This strategy makes us resilient against the pitfalls of pseudo-continuum-fitting, and effortlessly propagates the uncertainty attributable to the continuum level into the uncertainty in the astrophysically interesting stellar parameters.}.  We modified the default implementation by chunking the spectrum into 58 of its cleanest spectral orders and deriving the stellar parameters $\vt_{\ast,m}$ \emph{independently} in each $m^{\mathrm{th}}$ order.  We therefore have 58 unique estimates for $\teff$ as a function of wavelength, which we compile in Figure \ref{fig:teffOrder}.  The figure shows a dramatic effect: \textbf{The derived effective temperature is on-average about 800 K cooler in the $K-$band than in the optical.}  
+
+We interpret the cooler temperatures derived at $K-$band as the presence of sunspots contributing more flux at longer wavelengths, as shown in the bottom panel of Figure \ref{fig:teffOrder}.  Here we show the absolute flux ratio, $f_{\lambda, B} / f_{\lambda, A}$ at two different temperatures: $T_\textrm{eff,A} = 4100$ and $T_\textrm{eff,B} = 3300$.  We present the ratio of two synthetic spectra from Phoenix (blue solid line), and the black body ratio (red dashed line).  
+
+We further performed a plausibility check to constrain the effect size of starspots.  We generated flux calibrated spectra at two temperatures, and forward-modeled them to resemble the LkCa4 IGRINS and ESPaDOnS spectra in all other ways (\emph{i.e.} $\logg, \Z, \vt_{\rm ext}$), including noise and calibration parameters.  We coadded the spectra in a mixture model:  $ \mathsf{M}_{mix} = c \cdot \mathsf{M}_A(T_\textrm{eff,A}) + (1-c) \cdot \mathsf{M}_B(T_\textrm{eff,B})$.  We chose a fill factor of starspots of 30\%.  We then re-ran our single-temperature fitting procedure on the two-temperature, synthetic, noised-up data to see what stellar parameters one would na\"{\i}vely derive.  The noised-up optical data yields $\teff \sim 4100$ K, close to that of the A component.  We are awaiting the results from $K-$ band at the time of writing.
+
+Our ongoing work is focused on several improvements to the whole-spectrum fitting procedure.  First we are adding support for directly fitting a mixture model, $\mathsf{M}_{mix}$.  This will provide a \emph{measurement} of the star spot temperature and areal coverage fraction.  Mixture model fitting capability will enable true whole-spectrum fitting, a more powerful on-label use of the fitting machinery.
+
+We are also introducing improvements in residual spectrum outlier rejection, which will reduce some scatter in our measurements.
+
+\begin{figure}[b]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[bb = 50 363 550 720,clip=true, width=1.0\textwidth]{figures/lkca4_hrdiag.pdf}
+        \caption{A pre-main-sequence HR diagram}
+        \label{fig:gull}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/K2_selection.pdf} 
+        \caption{K2 Cycle 2 YSOs in OPH or SCO}
+        \label{fig:tiger}
+    \end{subfigure}
+    \caption{The position of LkCa4 using effective temperatures derived from the optical or $H-$band ($\teff\sim4100$), versus the $K-$band ($\teff \sim 3300$). \emph{(b)} The green contours show the variability locus of 1658 young sources.  The black star is the position of LkCa4.  We selected sources with above- and below- average amplitude.} \label{fig:science}
+\end{figure}
+
+
+\begin{figure}[b]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figures/teff_v_wl_example} 
+	\caption{\emph{Top panel:} Effective temperature as derived by different spectral orders.  The pattern is consistent with more than 25\% of the stellar surface being covered in cool spots.  \emph{Bottom panel:}  The ratio of flux for a patch of stellar photosphere with $\teff=3300$ K to $\teff=4100$ K. }
+	\label{fig:teffOrder}
+\end{figure}
+
+
+\bibliography{gully_mcd_2016_prop}
+
+\end{document}
