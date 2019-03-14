@@ -13,7 +13,8 @@ TESS Cycle 2 Proposal
     - Cite Arizona group, starry; tradeoff in fidelity and scalability
 3. Analysis Plan
   - Get amplitudes and periods for a large fraction of stars from TESS data
-  - Get starspot temperature and coverage fraction for a sample of these stars from spectroscopy
+  - Compute the typical ratio of Kepler/K2 amplitudes to TESS amplitudes at given SpT/rotation rate to measure spot contrast difference
+  - Get starspot temperature and coverage fraction for a subsample of these stars from spectroscopy
   - Compute the ratio of TESS amplitude to total spot coverage
   - Compute a regression of spot coverage to rotation rate and spectral subtype.  
 4. Technical Feasibility
@@ -23,12 +24,12 @@ TESS Cycle 2 Proposal
   - I have already applied the spectral technique to a wide range of young stars
   - Availability of archival spectroscopy
 5. Expected Impact
-  - Transferring high fidelity spectroscopic measurements to high-scalability (all-sky) TESS will deliver probabilistic lookup table for spot coverage
-  - Lookup tables for surface coverage fractions will aid planning for JWST observation planning and coarse TLSE corrections
+  - Probabilistic lookup table for spot coverage
+  - Direct estimate of spot coverage for selected high value targets
   - Gateway to future investigation pathways:
     - Trends in spot coverage with lightcurve periodic substructure
     - Trends in spot coverage with lightcurve high frequency residual substructure
-    - Compare average Kepler/K2 amplitudes to TESS amplitudes at given SpT/rotation rate to gauge spot contrast differences (!)
+    -
 6. Work Plan
   - Derive amplitudes and periods for large sample of TESS sources.
   - Select targets based on ranges of TESS rotation rate

@@ -202,66 +202,39 @@ thinga
 \subsection{Stellar surface structures as a gateway for brown dwarf cloud modelin}
 more yjumd
 
-
 \section{Analysis Plan}
 
 \subsection{Get amplitudes and periods for a large fraction of stars from TESS data}
-\subsection{Get starspot temperature and coverage fraction for a sample of these stars from spectroscopy}
+\subsection{Compute the typical ratio of Kepler/K2 amplitudes to TESS amplitudes at given SpT/rotation rate}
+\subsection{Interpret the Tess/Kepler ratios as spot contrast differences}
+\subsection{Get starspot temperature and coverage fraction for a subsample of these stars from spectroscopy}
 \subsection{Compute the ratio of TESS amplitude to total spot coverage}
 \subsection{Compute a regression of spot coverage to rotation rate and spectral subtype.}
 
 
 \section{Technical Feasibility}
 
-\subsection{Essentially measuring periods and amplitudes, which has been demonstrated}
+\subsection{Measuring periods and amplitudes, which has been demonstrated}
 \subsection{There will be enough GKM stars}
 \subsection{The TESS precision will be adequate}
-\subsection{I have already applied the spectral technique to a wide range of young stars}
+\subsection{Experience with the spectral technique on young stars}
 \subsection{Availability of archival spectroscopy}
 
 
 \section{Expected Impact}
 
-Summarize the expected science return of the proposed investigations and the expected benefit
-to the community, including new data products and software tools to be made publicly available.
+\subsection{Probabilistic lookup table for spot temperature and spot coverage}
+\subsection{Direct estimate of spot coverage for selected high value targets}
+\subsection{Gateway to future investigation pathways}
+\subsubsection{Trends in spot coverage with lightcurve periodic substructure}
+\subsubsection{Trends in spot coverage with lightcurve high frequency residual substructure}
+\subsubsection{Trends in spot coverage with lightcurve high frequency residual substructure}
 
 
 \section{Work Plan}
 
-Provide a brief (1 paragraph) work plan that provides details on how the proposed effort will be carried out, including the allocation of effort amongst investigators. Investigators who are proposing to continue a program that was selected for funding in Cycle 1 must describe why additional funds are required in Cycle 2. All proposals requesting funds must also provide upon submission a bottom-line budget number in the provided field of the ARK submission form; this number should not be included in the body of the proposal.
+MGS will carry out the data analysis using custom scripts that build upon the heritage of the Kepler data analysis ecosystem, including \texttt{lightkurve}, \texttt{astropy}, \texttt{celerite}, \texttt{BombScargle}, and \texttt{bokeh}.  MGS will first apply these scripts to Kepler SAP lightcurves or detrended K2 data while in his current role as support scientist at the Kepler/K2 Guest Observer Office.  MGS will adapt and apply these scripts to TESS data---in the event of GI proposal selection---starting in Fall 2019.  All scripts will be publicly available and developed openly on GitHub, including tutorial Jupyter Notebooks.  MGS will produce an interactive \texttt{bokeh} tool to visualize the Fourier decomposition of a periodic lightcurve into its constituent components.  This tool will leverage the PI's familiarity with \texttt{bokeh}, to aid students' visualization different amplitudes.  A machine readable database will be produced that contains the following information for each star found to possess starspot-induced lightcurve modulation: 1) the period, 2) an iteratively determined mask of stellar flares and/or spurious data artifacts, 3) a vector of Chebychev polynomial coefficients to account for any long-term normalization trends on timescales comparable to the observation window, and 4) a vector of Fourier amplitudes that can reconstruct the periodic structures in the lightcurve to within the signal-to-noise ratio of the data.
 
-\section{References}
-
-List of references. References {\it are included} when considering the proposal 4 page limit.
 \bibliography{tessgi_gully_cycle2}
-
-
-\section{Target Table}
-
-When necessary to justify your proposal, provide a list of targets using the below example as
-a template for format. This target table is designed to aid reviewers and need only provide a
-representative sample of the complete target list uploaded to RPS. Full target tables should be
-submitted electronically with the Phase-1 proposal. Please limit this target table to only 1 page.
-The table is {\it not included} in the 4 page limit of the Science/Technical section. Proposals including
-a target table may be up to 5 pages in length, but only the target table may appear on page 5.
-
-\begin{center}
-\begin{tabular}{ | c | c | c | c | c | c | c | }
-\hline
-TIC ID          &      Common      &     RA             &      Dec          &      TESS       &       Obj.        &      Comments \\
-                    &      Name           &     (deg)          &      (deg)        &      mag         &       Type       &                         \\
-\hline
-\hline
-388857263  &  Prox Cen          &  217.428793  &  -62.679592  &  7.36             &    M Dwarf    & 2 min cad., RV planet \\ \hline
-                    &                           &                       &                      &                      &                     &                                     \\ \hline
-                    &                           &                       &                      &                      &                     &                                     \\ \hline
-                    &                           &                       &                      &                      &                     &                                     \\ \hline
-                    &                           &                       &                      &                      &                     &                                     \\ \hline
-\end{tabular}
-\end{center}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% End of document %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
