@@ -149,6 +149,12 @@
 \begin{document}
 \pagestyle{plain}
 \pagenumbering{arabic}
+\setlength{\bibsep}{0.0pt}
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldbibliography{#1}%
+  \setlength{\itemsep}{0pt}%
+}
 
 
 
@@ -177,7 +183,7 @@ Starspots confound derived stellar properties and a strategy for probabilistic m
 
 Here we propose a strategy for mitigating starspot-induced exoplanet radius biases, based on a large sample of spotted stars observed in \tess\ Cycle 2.  The approach will deliver constraints on both the typical starspot coverage fraction and the typical starspot temperature contrast, as a function of spectral type and rotation rate.  This mapping can then serve as a ``lookup table'' for practitioners to gauge the extent to which a given source is likely to suffer from starspot-induced exoplanet radius biases.  No such reliable lookup table presently exists for main sequence stars, owing to the inability of differential lightcurves to account for \emph{total} starspot coverage fractions \citep{2018ApJ...865..142B}.
 
-This program will leverage the \tess\ Cycle 2 overlap with the \kepler\ prime field, and includes an option for contemporaneous ground-based observations with unique instrumentation based in the Northern hemisphere.
+This program will leverage the \tess\ Cycle 2 overlap with the \kepler\ prime field and portions of \ktwo\ fields.
 
 \section{Scientific Justification}
 
@@ -191,11 +197,11 @@ The prevailing assumption within the exoplanet community has been that starspot 
 
 \subsection{Kepler and TESS perceive different starspot contrast}
 
-Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere, vanishing altogether.
+Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere.  The sun
 
 The spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a characteristic spot temperature, $T_{spot}<T_{phot}$ that parameterizes the wavelength dependence of the contrasts.
 
-The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses:
+The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses.
 
 $$\frac{c_{TESS}}{c_{Kepler}}(\mathrm{SpT},\;P_{\mathrm{rot}})$$
 
@@ -208,25 +214,24 @@ $$ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$$
 
 Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint independent of the actual spot coverage fraction:
 
-$$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} \label{eqn1}$$
+$$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} $$
 
 \subsection{Measuring Kepler/K2 and TESS amplitudes: Statistical samples}
-We see \ref{eqn1} above.
-\subsection{Measuring Kepler/K2 and TESS amplitudes: The Kepler Prime Field}
-\subsection{Interpret the Tess/Kepler ratios as spot contrast differences}
-\subsection{Get starspot temperature and coverage fraction for a subsample of these stars from spectroscopy}
-%\subsection{Compute the ratio of TESS amplitude to total spot coverage}
-%\subsection{Compute a regression of spot coverage to rotation rate and spectral subtype.}
+Ideally we would have simultaneouly observed the same targets with \kepler\ and \tess\ to measure the contrast for individual stars\footnote{Technically K2 Campaign 19 contemporaneously observed a subset of the same stars as \tess, but yielded few sources relevant to this discussion.}.  Since this observational strategy was not possible, we can construct statistical subsamples of stars that are identical in every way, except for their observation band.
 
+The main two factors that affect spot-modulation lightcurve amplitudes are effective temperature (\emph{i.e.} mass), and rotation period (\emph{i.e.} stellar activity/magnetic fields) \citep{2014ApJS..211...24M}.  Other important albeit unknwon factors like stellar inclination angle and multiplicity are statistically identical between the \tess\ and \kepler\ samples.  We therefore propose to follow \citet{2014ApJS..211...24M} by constructing plots of amplitude versus period, subdivided into bins of effective temperature.  The two samples should look identical in these plots, but the locus of \tess\ sources are expected to fall below the \kepler\ sample, as in Figure \ref{fig:predictAmps}.
+
+\begin{figure}
+\includegraphics[width=0.98\textwidth]{figures/multi_panel.pdf}
+\caption{Prediction for \tess\ amplitudes relative to the \kepler\ sample.}
+\label{fig:predictAmps}
+\end{figure}
 
 \section{Technical Feasibility}
 
-\subsection{Measuring periods and amplitudes, which has been demonstrated}
-\subsection{There will be enough GKM stars}
-\subsection{The TESS precision will be adequate}
-Rapid rotators tend to exhibit larger amplitudes of lightcurve undulations than slower rotators.
-\subsection{Experience with the spectral technique on young stars}
-\subsection{Availability of archival spectroscopy}
+Measuring periods and amplitudes of \kepler\ and \tess\ lightcurves is a routine operation, with relatively low risk.  The PI has experience determining amplitudes with a Fourier-based decomposition technique in \ktwo\ Campaign 2.  The \tess\ mission was designed to target cool main sequence stars with an abundance of K and M dwarfs.  This program will focus on the rapidly rotating stars ($P_{rot}<20$ days), which exhibit relatively large amplitudes ($A>2000$ ppm), illustrated in panel D of Figure \ref{fig:predictAmps}.  This program will attempt---on a best effort basis---to measure the slowest rotating stars, which have periods much longer than the typical observation window of 27-54 days, and amplitudes comparable to the precision limits of \tess; these slow rotating sources must reside near the continuous viewing zone in the North Ecliptic Pole.
+
+One potential risk is the that the \kepler\ and \tess\ samples will possess statistical differences beyond their observation bands, confounding the...
 
 \section{Expected Impact}
 
@@ -243,7 +248,7 @@ The adopted Fourier analysis technique naturally collates the relative amplitude
 
 \section{Work Plan}
 
-The Pincipal Investigator (PI) will carry out the data analysis using custom scripts that build upon the heritage of the Kepler data analysis ecosystem, including \texttt{lightkurve}, \texttt{astropy}, \texttt{celerite}, \texttt{BombScargle}, \texttt{PyTorch}, and \texttt{bokeh}.  The PI will first apply these scripts to Kepler/K2 lightcurves while in their current role as support scientist at the Kepler/K2 Guest Observer Office.  The PI will relocate to the University of Texas at Austin in February 2020 as a Research Fellow.  UT Austin undergraduate and graduate students will lead the application of TESS-adapted scripts to \tess\ FFI lightcurves.  \tess-adapted scripts will leverage \texttt{TESS-cut} and \texttt{elenor} to produce lightcurves from FFIs.  Half of the funding will go to summer 2020 student salaries, and half will go to support the PI.  All reproducible scripts---including Jupyter Notebook tutorials---will be publicly available and developed openly on GitHub.  MGS will provide students with an interactive \texttt{bokeh} tool to visualize the Fourier decomposition of a periodic lightcurve into its constituent components.  This tool will leverage the PI's familiarity with \texttt{bokeh} to aid understanding and rapid visual spotchecking of the multidimensional analysis output.  Finally, a High Level Science Product (HLSP) will be delivered to MAST that contains the following information for each star found to possess detectable starspot-induced lightcurve modulation: 1) the period or periods, 2) an iteratively determined outlier mask of stellar flares, occultations, or spurious data artifacts, 3) a vector of Chebychev polynomial coefficients to account for any long-term normalization trends on timescales comparable to the observation window, and 4) an $N_{\mathrm{Fourier}}$ vector of Fourier harmonic amplitudes that reconstruct the periodic structures in the lightcurve to within the signal-to-noise ratio of the data.  MGS will advise students in the writeup of the paper(s), authored and/or coauthored by students.
+The Principal Investigator (PI) will carry out the data analysis using custom scripts that build upon the heritage of the \kepler\ data analysis ecosystem, including \texttt{lightkurve}, \texttt{astropy}, \texttt{celerite}, \texttt{BombScargle}, \texttt{PyTorch}, and \texttt{bokeh}.  The PI will first apply these scripts to Kepler/K2 lightcurves while in the role as support scientist at the Kepler/K2 Guest Observer Office.  The PI will relocate to the University of Texas at Austin in February 2020 as a Research Fellow.  UT Austin undergraduate and graduate students will lead the application of TESS-adapted scripts to \tess\ FFI lightcurves.  \tess-adapted scripts will leverage \texttt{TESS-cut} and \texttt{elenor} to produce lightcurves from FFIs.  Half of the funding will go to summer 2020 student salaries, and half will go to support the PI.  All reproducible scripts---including Jupyter Notebook tutorials---will be publicly available and developed openly on GitHub.  MGS will provide students with an interactive \texttt{bokeh} tool to visualize the Fourier decomposition of a periodic lightcurve into its constituent components.  This tool will leverage the PI's familiarity with \texttt{bokeh} to aid understanding and rapid visual spotchecking of the multidimensional analysis output.  Finally, a High Level Science Product (HLSP) will be delivered to MAST that contains the following information for each star found to possess detectable starspot-induced lightcurve modulation: 1) the period or periods, 2) an iteratively determined outlier mask of stellar flares, occultations, or spurious data artifacts, 3) a background-star amplitude-dillution estimate, 4) a vector of Chebychev polynomial coefficients to account for any long-term normalization trends on timescales comparable to the observation window, and 5) a vector of Fourier harmonic amplitudes that reconstruct the periodic structures in the lightcurve to within the signal-to-noise ratio of the data.  MGS will advise students in the writeup of the paper(s), authored and/or coauthored by students.
 
 \bibliography{tessgi_gully_cycle2}
 

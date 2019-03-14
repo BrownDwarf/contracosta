@@ -29,7 +29,6 @@ TESS Cycle 2 Proposal
   - Gateway to future investigation pathways:
     - Trends in spot coverage with lightcurve periodic substructure
     - Trends in spot coverage with lightcurve high frequency residual substructure
-    -
 6. Work Plan
   - Derive amplitudes and periods for large sample of TESS sources.
   - Select targets based on ranges of TESS rotation rate
