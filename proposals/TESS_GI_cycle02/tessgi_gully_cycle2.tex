@@ -50,7 +50,7 @@
 
 \usepackage{caption}
 \usepackage{subcaption}
-
+\usepackage{cancel}
 
 \usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \bibliographystyle{plainnat}
@@ -189,30 +189,34 @@ The prevailing assumption within the exoplanet community has been that starspot 
 
 \section{Analysis Plan}
 
-\subsection{Kepler and Tess perceive different starspot contrast}
+\subsection{Kepler and TESS perceive different starspot contrast}
 
 Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere, vanishing altogether.
 
-The spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a spot temperature, $T_{spot}$, distinct from the ambient photosphere $T_{phot}$.
+The spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a characteristic spot temperature, $T_{spot}<T_{phot}$ that parameterizes the wavelength dependence of the contrasts.
 
 The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses:
 
 $$\frac{c_{TESS}}{c_{Kepler}}(\mathrm{SpT},\;P_{\mathrm{rot}})$$
 
-The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution to $T_{phot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.  Operationally, integrating the specific intensity $I_\lambda(T_{phot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{phot})$ can be approximated as a stellar photosphere, such as the \texttt{PHOENIX} model grid.
+The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution\footnote{Operationally, integrating the specific intensity $I_\lambda(T_{spot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{spot})$ can be approximated as a cooler stellar photosphere, such as the \texttt{PHOENIX} model grid \citep{2013A&A...553A...6H}, an inexact but adequate assumption for the large bandpasses.} to $T_{spot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.
 
-Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk.  The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum.  The amplitude of the lightcurve therefore equals the difference in starspot coverage fractions between the most-and-least spotted projected hemispheres \emph{multiplied by the spot contrast}.
+\subsection{Spot-induced modulation amplitudes depend on contrast}
+Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk.  The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum.  The amplitude of the lightcurve therefore equals the difference in starspot coverage fractions $\Delta f_{spot}$ between the most-and-least spotted projected hemispheres \emph{weighted by the spot contrast}:
 
+$$ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$$
 
-\subsection{Different amplitudes and periods for a large fraction of stars from TESS data}
+Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint independent of the actual spot coverage fraction:
 
-Rapid rotators tend to exhibit larger amplitudes of lightcurve undulations than slower rotators.  The amplitude of the If starspots were completely non-emitting across all wavelengths, \kepler\ and \tess\ would measure the same
+$$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} \label{eqn1}$$
 
-\subsection{Compute the typical ratio of Kepler/K2 amplitudes to TESS amplitudes at given SpT/rotation rate}
+\subsection{Measuring Kepler/K2 and TESS amplitudes: Statistical samples}
+We see \ref{eqn1} above.
+\subsection{Measuring Kepler/K2 and TESS amplitudes: The Kepler Prime Field}
 \subsection{Interpret the Tess/Kepler ratios as spot contrast differences}
 \subsection{Get starspot temperature and coverage fraction for a subsample of these stars from spectroscopy}
-\subsection{Compute the ratio of TESS amplitude to total spot coverage}
-\subsection{Compute a regression of spot coverage to rotation rate and spectral subtype.}
+%\subsection{Compute the ratio of TESS amplitude to total spot coverage}
+%\subsection{Compute a regression of spot coverage to rotation rate and spectral subtype.}
 
 
 \section{Technical Feasibility}
@@ -220,6 +224,7 @@ Rapid rotators tend to exhibit larger amplitudes of lightcurve undulations than 
 \subsection{Measuring periods and amplitudes, which has been demonstrated}
 \subsection{There will be enough GKM stars}
 \subsection{The TESS precision will be adequate}
+Rapid rotators tend to exhibit larger amplitudes of lightcurve undulations than slower rotators.
 \subsection{Experience with the spectral technique on young stars}
 \subsection{Availability of archival spectroscopy}
 
