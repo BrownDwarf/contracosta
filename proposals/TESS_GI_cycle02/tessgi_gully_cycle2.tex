@@ -186,26 +186,18 @@ Here we propose a strategy for mitigating starspot-induced exoplanet radius bias
 This program will leverage the \tess\ Cycle 2 overlap with the \kepler\ prime field and portions of \ktwo\ fields.
 
 \section{Scientific Justification: The Transit Light Source Effect}
-The diminution of flux arising from occultations of the stellar disk contains information about the relative sizes of the occulting bodies.  A commonsense exoplanet heuristic dictates that the relative transit depth $D$ equals the ratio of the bodies' projected areas ($R_p^2/R_\star^2$).  Addtional correction factors account for limb darkening \citep{2002ApJ...580L.171M}.  Starspots on a stellar surface can exhibit spatial segrations %\footnote{Sunspots reside on the Sun's mid-latitudes; starspots can exist near the stellar poles, as evinced in spatially resolved interferometry of nearby giant stars \citep{2016Natur.533..217R}.}
+The diminution of flux arising from occultations of the stellar disk contains information about the relative sizes of the occulting bodies.  A commonsense exoplanet heuristic dictates that the relative transit depth $D$ equals the ratio of the bodies' projected areas ($R_p^2/R_\star^2$).  Addtional correction factors account for limb darkening \citep{2002ApJ...580L.171M}.  Starspots on a stellar surface can exhibit spatial segregations
 that yield \emph{unocculted starspots}: spots that are present on the surface but are not traversed during transits.  These unocculted starspots confound the mapping of transit depth to planet radius: a planet ``looks bigger'' than it really is if it blocks the brighter-on-average flux of the stellar disk \citep{2018AJ....156...91M}.  \textbf{You cannot measure a planet radius without making some assumptions about the extent, contrast, and distribution of starspots.}
 
 The prevailing assumption within the exoplanet community has been that starspot covering fractions are small enough---as in Sunspots---to be ignored.  New theoretical models \citep{2018ApJ...853..122R} and observational evidence \citep{2016MNRAS.463.2494F} indicate that starspot covering fractions are large enough to bias transit depths beyond the level of precision of \kepler\ and \tess.  This so-called ``Transit Light Source Effect'' (TLSE) injects significant bias into derived exoplanet \emph{densities}, since the radius error propagates into volume error with a factor of 3.  Therefore, TLSE threatens placement and interpretation of the exoplanet mass-radius relation science requirements of the \tess\ mission.  The interpretation of \jwst\ exoplanet transmission spectroscopy is also at risk without improved knowledge of the level of the stellar photospheric contamination \citep{2019AJ....157...11W}.
 
 \section{Analysis Plan}
 
-\textbf{Kepler and TESS perceive different starspot contrasts.}s
+\textbf{Kepler and TESS perceive different starspot contrasts.}
 
-Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere.  The sun
+Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere.  Spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a characteristic spot temperature, $T_{spot}<T_{phot}$ that parameterizes the wavelength dependence of the contrasts.  The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses.  The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution\footnote{Operationally, integrating the specific intensity $I_\lambda(T_{spot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{spot})$ can be approximated as a cooler stellar photosphere, such as the \texttt{PHOENIX} model grid \citep{2013A&A...553A...6H}, an inexact but adequate assumption for the large bandpasses.} to $T_{spot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.
 
-The spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a characteristic spot temperature, $T_{spot}<T_{phot}$ that parameterizes the wavelength dependence of the contrasts.
-
-The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses.
-
-$$\frac{c_{TESS}}{c_{Kepler}}(\mathrm{SpT},\;P_{\mathrm{rot}})$$
-
-The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution\footnote{Operationally, integrating the specific intensity $I_\lambda(T_{spot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{spot})$ can be approximated as a cooler stellar photosphere, such as the \texttt{PHOENIX} model grid \citep{2013A&A...553A...6H}, an inexact but adequate assumption for the large bandpasses.} to $T_{spot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.
-
-\textbf{Spot-induced modulation amplitudes depend on contrast.}\\
+\textbf{Spot-induced modulation amplitudes depend on contrast.}
 Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk.  The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum.  The amplitude of the lightcurve therefore equals the difference in starspot coverage fractions $\Delta f_{spot} \equiv f_{max}-f_{min}$ between the most-and-least spotted projected hemispheres \emph{weighted by the spot contrast}:
 
 $$ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$$
@@ -214,17 +206,13 @@ Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint indepen
 
 $$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} $$
 
-Recent stellar surface inhomogeneity modeling \citep{2018ApJ...853..122R, 2018ApJ...868..143G} has yielded coarse scaling factors $\zeta$ for estimating the total starspot surface coverage fraction from the observed lightcurve amplitude $f_{spot}$:
+Recent stellar surface inhomogeneity modeling \citep{2018ApJ...853..122R, 2018ApJ...868..143G, 2018ApJ...865..142B} has yielded coarse scaling factors $\zeta$ for estimating the total starspot surface coverage fraction from the observed lightcurve amplitude $f_{spot}$, yielding $$ p(f_{spot}) = \zeta \cdot A $$, where $\zeta$ represents a probability distribution with values typically between 1 and 50, depending on the degree of assumed starspot longitudinal symmetry.  Equipped with \tess-measured $A$ values, we can provide what practitioners seek: a per-star estimate of $f_{spot}$ and $T_{spot}$.
 
-$$ p(f_{spot}) = \zeta \cdot A $$
+\textbf{Distinguishing Kepler/K2 and TESS amplitudes with statistical similar subsamples}
 
-where $\zeta$ represents a probability distribution with values typically between 1 and 50, depending on the degree of assumed starspot longitudinal symmetry.  Equipped with \tess-measured $A$ values, we can provide what practitioners seek: a per-star estimate of $f_{spot}$ and $T_{spot}$.
+Ideally we would have simultaneouly observed the same targets with \kepler\ and \tess\ to measure the contrast for individual stars.  Since this observational strategy was not possible for a large number of stars, we instead construct statistical subsamples of stars that are identical in every way, except for their observation band.
 
-\textbf{Measuring Kepler/K2 and TESS amplitudes with statistical samples}
-
-Ideally we would have simultaneouly observed the same targets with \kepler\ and \tess\ to measure the contrast for individual stars\footnote{Technically K2 Campaign 19 contemporaneously observed a subset of the same stars as \tess, but yielded few sources relevant to this discussion.}.  Since this observational strategy was not possible, we can construct statistical subsamples of stars that are identical in every way, except for their observation band.
-
-The main two factors that affect spot-modulation lightcurve amplitudes are effective temperature (\emph{i.e.} mass), and rotation period (\emph{i.e.} stellar activity/magnetic fields) \citep{2014ApJS..211...24M}.  Other important albeit unknwon factors like stellar inclination angle and multiplicity are statistically identical between the \tess\ and \kepler\ samples.  We therefore propose to follow \citet{2014ApJS..211...24M} by constructing plots of amplitude versus period, subdivided into bins of effective temperature.  The two samples should look identical in these plots, but the locus of \tess\ sources are expected to fall below the \kepler\ sample, as in Figure \ref{fig:predictAmps}.
+The main two factors that affect spot-modulation lightcurve amplitudes are effective temperature (\emph{i.e.} mass), and rotation period (\emph{i.e.} stellar activity/magnetic fields) \citep{2014ApJS..211...24M}.  Other important-albeit-unknown factors like stellar inclination angle and multiplicity are statistically identical between the \tess\ and \kepler\ samples.  We therefore propose to follow \citet{2014ApJS..211...24M} by constructing plots of amplitude versus period, subdivided into bins of effective temperature.  The two samples should look identical in these plots, but the locus of \tess\ sources are expected to fall below the \kepler\ sample, as in Figure \ref{fig:predictAmps}.
 
 \begin{figure}
 \includegraphics[width=0.95\textwidth]{figures/multi_panel.pdf}
@@ -244,7 +232,7 @@ One potential risk to this program is the that the \kepler\ and \tess\ populatio
 
 The main deliverable of this work will be a probabilistic assessment of the starspot temperature and starspot coverage faction for every star with a measured starspot modulation period and amplitude in \tess\.  These probability distributions will empower exoplanet researchers to constrain biases in exoplanet transit radii.  The probability distributions will reflect all the available information garnered from \tess, and reasonable assumptions about starspot geometrical distributions.
 
-\subsection{Stellar surface structures as a gateway for brown dwarf cloud modeling}
+Finally, stellar surface structures serve as a stepping stone for brown dwarf cloud modeling, a poorly understood phenomenon that will inform our understand of exoplanet spectroscopy.  The proposed work will demonstrate how to gain insights about probable surface structures in the presence of significant geoemtrical degeneracies.
 
 
 \section{Work Plan}
