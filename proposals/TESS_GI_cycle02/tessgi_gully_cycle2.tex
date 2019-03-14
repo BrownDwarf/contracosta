@@ -160,7 +160,7 @@
 \bfseries\uppercase{%
 %%
 %% ENTER TITLE OF PROPOSAL BELOW THIS LINE
-Starspots confound derived stellar properties and a concept for probabilistic mitigation
+Starspots confound derived stellar properties and a strategy for probabilistic mitigation
 %%
 %%
 }
@@ -175,34 +175,39 @@ Starspots confound derived stellar properties and a concept for probabilistic mi
 
 \section{Introduction}
 
-Summarize the problem being addressed and give an overview of how your investigation will help.
-Why \tess, why now?
+Here we propose a strategy for mitigating starspot-induced exoplanet radius biases, based on a large sample of spotted stars observed in \tess\ Cycle 2.  The approach will deliver constraints on both the typical starspot coverage fraction and the typical starspot temperature contrast, as a function of spectral type and rotation rate.  This mapping can then serve as a ``lookup table'' for practitioners to gauge the extent to which a given source is likely to suffer from starspot-induced exoplanet radius biases.  No such reliable lookup table presently exists for main sequence stars, owing to the inability of differential lightcurves to account for \emph{total} starspot coverage fractions \citep{2018ApJ...865..142B}.
 
+This program will leverage the \tess\ Cycle 2 overlap with the \kepler\ prime field, and includes an option for contemporaneous ground-based observations with unique instrumentation based in the Northern hemisphere.
 
 \section{Scientific Justification}
 
-
-
-\subsection{Starspots as confounders of isochronal ages}
-For example, see \cite{2015ApJ...807..174S} and \cite{2015arXiv150706460F}).  Specifically, stellar evolution models
-
-
-%% Trigger Criteria section:
-%% comment this section out on proposals not asking for
-%% Target of Opportunity (ToO) observations.
-
 \subsection{Transit Light Source Effect}
-The diminution of flux arising from occultations of the stellar disk contains information about the relative sizes of the occulting bodies.  A commonsense exoplanet heuristic dictates that the relative transit depth $D$ (in units of ppm or $\%$) equals the ratio of the bodies' projected areas ($R_p^2/R_\star^2$).  Addtional correction factors account for limb darkening \citep{2002ApJ...580L.171M}.  Starspots on a stellar surface can exhibit spatial segrations\footnote{Sunspots reside on the Sun's mid-latitudes, and starspots can exist near the stellar poles, as evinced in spatially resolved interferometry of nearby giant stars \citep{2016Natur.533..217R}} that yield \emph{unocculted starspots}: spots that are present on the surface but are not traversed during event during transit.  These unocculted starspots confound the mapping of transit depth to planet radius: a planet ``looks bigger'' in a transit depth if it blocks the brighter-on-average flux of the stellar disk.  \textbf{You cannot measure a planet radius without making some assumptions about the extent, contrast, and distribution of starspots.}
+The diminution of flux arising from occultations of the stellar disk contains information about the relative sizes of the occulting bodies.  A commonsense exoplanet heuristic dictates that the relative transit depth $D$ equals the ratio of the bodies' projected areas ($R_p^2/R_\star^2$).  Addtional correction factors account for limb darkening \citep{2002ApJ...580L.171M}.  Starspots on a stellar surface can exhibit spatial segrations %\footnote{Sunspots reside on the Sun's mid-latitudes; starspots can exist near the stellar poles, as evinced in spatially resolved interferometry of nearby giant stars \citep{2016Natur.533..217R}.}
+that yield \emph{unocculted starspots}: spots that are present on the surface but are not traversed during transits.  These unocculted starspots confound the mapping of transit depth to planet radius: a planet ``looks bigger'' than it really is if it blocks the brighter-on-average flux of the stellar disk \citep{2018AJ....156...91M}.  \textbf{You cannot measure a planet radius without making some assumptions about the extent, contrast, and distribution of starspots.}
 
-The prevailing assumptions within the exoplanet community has been that starspot covering fractions are small enough that the 
-
-
-\subsection{Stellar surface structures as a gateway for brown dwarf cloud modelin}
-more yjumd
+The prevailing assumption within the exoplanet community has been that starspot covering fractions are small enough---as in Sunspots---to be ignored.  New theoretical models \citep{2018ApJ...853..122R} and observational evidence \citep{2016MNRAS.463.2494F} indicate that starspot covering fractions are large enough to bias transit depths beyond the level of precision of \kepler\ and \tess.  This so-called ``Transit Light Source Effect'' (TLSE) injects significant bias into derived exoplanet \emph{densities}, since the radius error propagates into volume error with a factor of 3.  Therefore, TLSE threatens placement and interpretation of the exoplanet mass-radius relation science requirements of the \tess\ mission.  The interpretation of \jwst\ exoplanet transmission spectroscopy is also at risk without improved knowledge of the level of the stellar photospheric contamination \citep{2019AJ....157...11W}.
 
 \section{Analysis Plan}
 
-\subsection{Get amplitudes and periods for a large fraction of stars from TESS data}
+\subsection{Kepler and Tess perceive different starspot contrast}
+
+Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means thes spot matches the specific intensity of the ambient photosphere, vanishing altogether.
+
+The spot contrast is wavelength dependent ($c_\lambda$), and can be thought of as possessing a spot temperature, $T_{spot}$, distinct from the ambient photosphere $T_{phot}$.
+
+The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses:
+
+$$\frac{c_{TESS}}{c_{Kepler}}(\mathrm{SpT},\;P_{\mathrm{rot}})$$
+
+The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution to $T_{phot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.  Operationally, integrating the specific intensity $I_\lambda(T_{phot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{phot})$ can be approximated as a stellar photosphere, such as the \texttt{PHOENIX} model grid.
+
+Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk.  The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum.  The amplitude of the lightcurve therefore equals the difference in starspot coverage fractions between the most-and-least spotted projected hemispheres \emph{multiplied by the spot contrast}.
+
+
+\subsection{Different amplitudes and periods for a large fraction of stars from TESS data}
+
+Rapid rotators tend to exhibit larger amplitudes of lightcurve undulations than slower rotators.  The amplitude of the If starspots were completely non-emitting across all wavelengths, \kepler\ and \tess\ would measure the same
+
 \subsection{Compute the typical ratio of Kepler/K2 amplitudes to TESS amplitudes at given SpT/rotation rate}
 \subsection{Interpret the Tess/Kepler ratios as spot contrast differences}
 \subsection{Get starspot temperature and coverage fraction for a subsample of these stars from spectroscopy}
@@ -228,6 +233,8 @@ The spectroscopic analysis component of this work will add long-term value to th
 
 \subsection{Trends in spot coverage with lightcurve periodic substructure}
 The adopted Fourier analysis technique naturally collates the relative amplitudes of periodic structures, which encode some additional information about the spatial distribution of stellar surface inhomogeneities, and/or differential rotation.  The collated harmonics will enable exploratory analyses of trends with other observables, as recently proposed in the amount of time a spot-modulated \kepler\ lightcurve exhibits single or double dips \citep{2018ApJ...863..190B}.
+
+\subsection{Stellar surface structures as a gateway for brown dwarf cloud modeling}
 
 \section{Work Plan}
 
