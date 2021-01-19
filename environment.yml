@@ -1,0 +1,51 @@
+name: contracosta #formerly starry_base
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.6
+  - numpy>=1.11
+  - scipy>=0.19.0
+  - matplotlib>=1.5.3
+  - astropy>=1.3
+  - astroquery>=0.3.7 # from conda-forge channel
+  - beautifulsoup4
+  - requests
+  - anaconda
+  - tqdm
+  - pandas
+  - oktopus # from conda-forge channel
+  - bokeh>=1.0 # optional, needed for interact
+  - jupyter # optional
+  - ipython # optional
+  - seaborn # optional
+  - photutils # optional, from conda-forge?
+  - scikit-learn # optional
+  - scikit-image # optional
+  - pytest-cov # for documentation and testing
+  - pytest-remotedata # for documentation and testing
+  - pytest-runner # for documentation and testing
+  - sphinx # for documentation and testing
+  - sphinx_rtd_theme # for documentation and testing
+  - nbsphinx # for documentation and testing
+  - numpydoc # for documentation and testing
+  - sphinx-automodapi # for documentation and testing
+  - graphviz
+  - ghp-import
+  - pybind11
+  - cython
+  - pylint
+  - flake8
+  - autopep8
+  - pep8
+  - fast-histogram
+  - healpy # Needed for some starry functions
+  - pip
+  - pip:
+    - twisted # optional
+    - mkl-random # optional
+    - astroml # optional
+    - corner
+    - emcee
+    # - wget
+    - astroml_addons # optional
