@@ -4,9 +4,13 @@
 \usepackage{graphics,graphicx}
 \usepackage{aas_macros}
 
-\usepackage{caption}
+\usepackage[svgnames]{xcolor}
+\definecolor{darkgrey}{RGB}{83, 92, 104}
+
+\usepackage[font={color=ocre,bf}]{caption}
 \usepackage{subcaption}
 \usepackage{cancel}
+\usepackage{wrapfig}
 
 \usepackage{fontspec}
 \usepackage[T1]{fontenc}
@@ -50,7 +54,7 @@
 \newcommand{\tess}{{\it TESS}}
 \newcommand{\jwst}{{\it JWST}}
 \newcommand{\kepler}{{\it Kepler}}
-\newcommand{\ktwo}{{K2}}
+\newcommand{\ktwo}{{\it K2}}
 \newcommand{\hst}{{\it HST}}
 \newcommand{\msun}{$M_{\odot}$}
 \newcommand{\rsun}{$R_{\odot}$}
@@ -90,8 +94,6 @@ Mitigating exoplanet radius biases from wavelength dependence of starspot contra
 %%%%% and technical feasibility     %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-
 Starspots bias percieved exoplanet radii \cite{2018ApJ...853..122R}.  Here we propose a systematic approach to quantify and mitigate starspot-induced exoplanet radius biases based on a large sample of spotted stars to be observed in \tess\ Cycle 4.  The approach will deliver constraints on both the typical starspot coverage fraction and the typical starspot temperature contrast, as a function of spectral type and rotation rate.  This mapping can then serve as a ``lookup table'' for practitioners to gauge the extent to which a given source is likely to suffer from starspot-induced exoplanet radius biases.  No such reliable lookup table presently exists for main sequence stars, owing to the inability of differential lightcurves to account for \emph{total} starspot coverage fractions \cite{2018ApJ...865..142B}.  This program will leverage the significant overlap of the \tess\ Cycle 4 fields with the \ktwo\ fields.
 
 \section{Scientific Justification: The Transit Light Source Effect}
@@ -100,12 +102,43 @@ that yield \emph{unocculted starspots}: spots that are present on the surface bu
 
 The prevailing assumption within the exoplanet community has been that starspot covering fractions are small enough---as in Sunspots---to be ignored.  New theoretical models \cite{2018ApJ...853..122R} and observational evidence \cite{2016MNRAS.463.2494F} indicate that starspot covering fractions are large enough to bias transit depths beyond the level of precision of \kepler\ and \tess.  This so-called ``Transit Light Source Effect'' (TLSE) can bias derived exoplanet radii up to 17\% in the \tess\ bandpass, and can bias derived exoplanet \emph{densities} up to 50\%, since the radius error propagates into volume error with a factor of 3.  Therefore, TLSE threatens placement and interpretation of the exoplanet mass-radius relation science requirements of the \tess\ mission.  The interpretation of \jwst\ exoplanet transmission spectroscopy is also at risk \cite{2019AJ....157...11W}.
 
-\section{Analysis Plan}
+\section{Analysis Plan: Compare \tess\ and \ktwo\ amplitudes}
 
 \textbf{Kepler and TESS perceive different starspot contrasts.}
 
-Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where 0 means the spots are non-emitting, and $c=1$ means the spot matches the specific intensity of the ambient photosphere.  Spot contrast is wavelength dependent ($c_\lambda$) and can be thought of as possessing a characteristic spot temperature, $T_{spot}<T_{phot}$ that parameterizes the wavelength dependence of the contrasts.  The analysis technique proposed here leverages the different wavelength dependence of the \kepler\ and \tess\ system throughputs to directly measure the ratio of the spot contrasts in their respective bandpasses.  The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution\footnote{Operationally, integrating the specific intensity $I_\lambda(T_{spot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{spot})$ can be approximated as a cooler stellar photosphere, such as the \texttt{PHOENIX} model grid \cite{2013A&A...553A...6H}, an inexact but adequate assumption for the large bandpasses.} to $T_{spot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.  \newline \newline
+Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where $0$ means the spots are completely black compared to the bright photosphere, and $c=0.3$ means the spot has 30\% the flux per-unit-surface-area of the pristine photosphere.  Hypothetically, a contrast of unity would mean the starspot blends into ambient photosphere, its border vanishing entirely.  Spot contrast is wavelength dependent ($c_\lambda$). It has a spectrum of its own, starting close to zero in the blue/visible, and approaching perhaps 40\% in the near-IR; the exact prescription remains an active research area \cite{2005LRSP....2....8B}.  Zeeman splitting and other magnetic phenomena are secondary to the mere fact that starspots appear as cooler-than-average regions on the stellar surface.  
+
+Starspot flux can be parameterized by labeling the emission components with a characteristic temperatures $T_\text{spot}<T_\text{phot}$.  The spot and ambient photosphere spectra depend only on those temperatures: $S(T_\text{spot})$ and $S(T_\text{phot})$.  The wavelength-dependent spot contrast is then simply the ratio of the spot spectrum to the ambient photosphere spectrum:  $c_\lambda = \frac{S(T_\text{spot})}{ S(T_\text{phot})}$.
+
+
+Figure \ref{fig:filtercurve} shows an illustration of wavelength dependent spot contrast for a hypothetical M0V star with $T_\text{phot}=3800\;$K, and with $T_\text{spot}=3300\;$K.  We employ \texttt{PHOENIX} synthetic spectral models \cite{2013A&A...553A...6H}, accessed at these temperatures.  The contrast ascends from near 0.01 at $\lambda=500\;$nm, to 0.15 at 1 $\mu$m.  By 2.3 $\mu$m, the contrast has peaked at 0.3.  The overlapping \kepler\ and \tess\ system throughputs overplotted on Figure \ref{fig:filtercurve} indicate that---on average---the starspot contrast is a lower number for \kepler\ than for \tess.  Starspots look blacker in \kepler\ and \ktwo\ than they do in TESS.  The understanding of wavelength dependent starspot contrast is not novel--- it has driven the design of precision radial velocity (PRV) spectrographs to the near-IR, where the deleterious effect of starspots on RV jitter is lessened.  \textbf{The key innovation of this proposal stems from the vast number of sources with existing \ktwo\ data that \tess\ will observe in Cycle 4.  This proposal aims to quantify precisely the starspot contrast differences between the \tess\ and \kepler\ wavelength bands.}  We re-iterate that the extent to which nature produces starspot spectra resembling the prescription in Figure \ref{fig:filtercurve} remains an unknown, and is the main thrust of the proposed work effort.  
+
+System-throughput-weighted contrast spectra can be integrated over the illustrated filter curves to yield exact estimates for contrasts in these two bands.  For this M0V example, we obtain $c_{\ktwo}\sim0.02-0.3$ and $c_{\tess}\sim0.1$.  Starspots appear about three to five times darker in \kepler\ and \ktwo\ than they do in \tess\.  We define the ratio of starspot contrasts of \tess\ compared to \kepler\ as $\mathcal{R}\equiv \frac{c_{\tess}}{c_{\ktwo}}$.  This proposal will measure the ratio of starspot contrast in the \tess\ bandpass compared to the \ktwo\ bandpass for a vast number of stars observed by both missions.
+
+
+
+
+
+
+illustrates the relative system throughputs of \tess\ and \kepler.  
+
+
+The analysis technique proposed here will systematically measure the ratio of starspot contrast between $\lambda = 550$ nm and $850$ nm by taking advantage of the different wavelength dependence of the \kepler\ and \tess\ system throughputs.
+
+\captionsetup[figure]{font={color=darkgrey,md},textfont={small,singlespacing,md},labelfont={bf,normalsize,color=Black},labelformat={simple},labelsep=period,name={Figure}}
+
+\begin{figure}[hbt!]
+    \includegraphics[width=0.95\textwidth]{figures/contrast_spectrum.pdf}
+    \caption{Illustration of starspot contrast as seen in \tess\ and \kepler. }
+    \label{fig:filtercurve}
+\end{figure}
+
+
+
+The spot contrast ratio---evaluated at these two pairs of bandpasses---provides a unique solution Operationally, integrating the specific intensity $I_\lambda(T_{spot})$ over the system throughputs produces the expected contrast ratios.  For now we assume $I_\lambda(T_{spot})$ can be approximated as a cooler stellar photosphere, such as the \texttt{PHOENIX} model grid \cite{2013A&A...553A...6H}, an inexact but adequate assumption for the large bandpasses. to $T_{spot}(\mathrm{SpT},\;P_{\mathrm{rot}})$.  \newline \newline
 \textbf{Spot-induced modulation amplitudes depend on contrast.}
+
+ 
 
 Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk.  The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum.  The amplitude of the lightcurve, therefore, equals the difference in starspot coverage fractions $\Delta f_{spot} \equiv f_{max}-f_{min}$ between the most-and-least spotted projected hemispheres weighted by the spot contrast: $ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$.  Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint independent of the actual spot coverage fraction:
 
@@ -115,19 +148,25 @@ Recent stellar surface inhomogeneity modeling \cite{2018ApJ...853..122R, 2018ApJ
 
 \textbf{Head-to-head comparison of K2 and TESS amplitudes in the ecliptic fields}
 
+\begin{wrapfigure}[23]{r}[10pt]{2.6in}
+    \vspace{0mm}
+    \begin{center}
+    \includegraphics[width=2.6in]{figures/fig1.pdf}
+    \caption{Expected signal strength of starspot contrast for the same stars measured in \tess\ and \kepler. }
+    \label{fig:expected}
+    \vspace{0mm}
+\end{center}
+\end{wrapfigure}
+
+
 Ideally, we would have simultaneously observed the same targets with \ktwo\ and \tess\ to measure the instantaneous amplitudes for individual stars.  Cycle 4 provides a unique opportunity to compare the amplitudes of \tess\ and \ktwo\ for the largest sample to date.
 
 The main two factors that affect spot-modulation lightcurve amplitudes are effective temperature (\emph{i.e.} mass), and rotation period (\emph{i.e.} stellar activity/magnetic fields) \cite{2014ApJS..211...24M}.  Other important-albeit-unknown factors like stellar inclination angle and multiplicity are statistically identical between the \tess\ and \kepler\ samples.  We, therefore, propose to follow \cite{2014ApJS..211...24M} by constructing plots of amplitude versus period, subdivided into bins of effective temperature.  The two samples should look identical in these plots, but the locus of \tess\ sources is expected to fall below the \kepler\ sample, as in panel D of Figure \ref{fig:predictAmps}.
 
-\begin{figure}[hbt!]
-\includegraphics[width=0.95\textwidth]{figures/multi_panel.pdf}
-\caption{\texttt{A)} Schematic of a planet ($R_p = 0.1 R_\star$) transiting a star with unocculted starspots as the star moves from left to right.  \texttt{B)} The resulting transit depth shows a systematic bias and a wavelength dependence due to starspots. \texttt{C)} Illustration of TLSE, \texttt{D)} Prediction for \tess\ amplitudes (colorful contours) relative to the \kepler\ sample (gray shaded background contours and black points) for $4000 < T_{phot} (K) < 4500$ \cite{2014ApJS..211...24M}.}
-\label{fig:predictAmps}
-\end{figure}
 
 \tess\ Cycle 4 will observe XX sources in the \ktwo\ campaign fields.  The fact that observations are not contemporaneous adds some \emph{cosmic variance}: stars wander into and out-of their respective stellar minimum and maximum activity cycles. On average stars will enter and exit stellar activity cycles in equal measure, injecting per-star variance, but keeping the subsample mean amplitudes the same.
 
-\section{Technical Feasibility}
+\section{Technical Feasibility: Consistency is key}
 
 Measuring periods and amplitudes of \kepler\ and \tess\ lightcurves is a routine operation, with relatively low risk.  
 
@@ -139,9 +178,13 @@ The main deliverable of this work will be a probabilistic assessment of the star
 
 The starspot properties are also of intrinsic astrophysical interest.  Trends in $T_{spot}$ with rotation rate and mass can reveal important clues to stellar activity, magnetic fields, and stellar atmospheres.  This work will directly address starspot-induced scatter and bias in isochronal-derived stellar ages \cite{2015ApJ...807..174S, 2017ApJ...836..200G}.
 
+
+
+
 \section{Work Plan}
 
-PI will carry out the data analysis using custom scripts that build upon the heritage of the \ktwo\ data analysis ecosystem, including \texttt{lightkurve} and \texttt{celerite}.  The PI will first apply these scripts to \ktwo\ lightcurves.  Undergraduate and graduate students will lead the application of TESS-adapted scripts to \tess\ FFI lightcurves with \texttt{TESS-cut} and \texttt{elenor}.  Half of the funding will go to 1 undergraduate and 1 graduate student Summer 2020 salary, and 0.3 FTE to support the PI.  All reproducible scripts---including Jupyter Notebook tutorials---will be publicly available and developed openly on GitHub.  PI will provide students with an interactive tool to visualize periodic lightcurve structures to aid rapid visual spot-checking of the multidimensional analysis output.  Finally, a High-Level Science Product (HLSP) will be delivered to MAST that contains the following information for each star found to possess detectable starspot-induced lightcurve modulation: 1) the period or periods, 2) an iteratively determined outlier mask of stellar flares, occultations, or spurious data artifacts, 3) a background-star amplitude-dilution estimate, 4) a probability distribution for the spot temperature and coverage fraction, 5) addition model fitting metadata.  PI will co-advise---with Co-I---students in the writeup of the paper(s), authored and/or coauthored by students.
+PI will carry out the data analysis using custom scripts that build upon the heritage of the \ktwo\ data analysis ecosystem, including \texttt{lightkurve} and \texttt{celerite}.  The PI will first apply these scripts to \ktwo\ lightcurves.  Undergraduate and graduate students will lead the application of TESS-adapted scripts to \tess\ FFI lightcurves with \texttt{TESS-cut} and \texttt{elenor}.  Half of the funding will go to 1 undergraduate and 1 graduate student Summer 2020 salary, and 0.3 FTE to support the PI.  All reproducible scripts---including Jupyter Notebook tutorials---will be publicly available and developed openly on GitHub.
+PI will provide students with an interactive tool to visualize periodic lightcurve structures to aid rapid visual spot-checking of the multidimensional analysis output.  Finally, a High-Level Science Product (HLSP) will be delivered to MAST that contains the following information for each star found to possess detectable starspot-induced lightcurve modulation: 1) the period or periods, 2) an iteratively determined outlier mask of stellar flares, occultations, or spurious data artifacts, 3) a background-star amplitude-dilution estimate, 4) a probability distribution for the spot temperature and coverage fraction, 5) addition model fitting metadata.  PI will co-advise---with Co-I---students in the writeup of the paper(s), authored and/or coauthored by students.
 
 
 \newpage
