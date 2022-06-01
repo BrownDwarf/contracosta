@@ -1,0 +1,88 @@
+\documentclass[modern]{aastex631}
+\bibliographystyle{aasjournal}
+
+% \usepackage{fontspec}
+% \usepackage[T1]{fontenc}
+% \usepackage{newtxsf}
+% \setmainfont{Fira Sans Book}[Scale=1.0]
+
+\usepackage[caption=false]{subfig}
+\usepackage{booktabs}
+
+\begin{document}
+\shorttitle{Starspot contrast with TESS and K2}
+\shortauthors{TBD}
+\title{A systematic measurement on starspot contrast from TESS and K2 
+bandpass differences}
+
+\author{TBD}
+\affiliation{University of Texas at Austin Department of Astronomy}
+
+\author{TBD}
+\affiliation{TBD}
+
+
+\begin{abstract}
+
+Abstract goes here.
+
+\end{abstract}
+
+\keywords{Starspots (1572)}
+
+\section{Introduction}\label{sec:intro}
+
+Here is an annotated bibliography.
+
+\begin{deluxetable}{chc}
+  \tablecaption{Annotated bibliography for intro\label{table1}}
+  \tablehead{
+  \colhead{Reference} & \nocolhead{two} & \colhead{Key idea}
+  }
+  \startdata
+  \citet{gullysantiago17} & - & LkCa~4 starspot spectral decomposition\\
+  \citet{2015ApJ...807..174S} & - & Radius inflation from spots \\
+  Strassmeier & - & Starspots review \\
+  Rackham & - & TLSE \\
+  \enddata
+\end{deluxetable}
+
+\newpage
+
+\begin{acknowledgements}
+This paper includes data collected by the TESS mission. Funding for the TESS mission is provided by the NASA's Science Mission Directorate.
+
+The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://www.tacc.utexas.edu}) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper.
+\end{acknowledgements}
+
+\clearpage
+
+
+\facilities{Gemini:South, TESS, ASAS, Gaia}
+
+\software{  pandas \citep{mckinney10, reback2020pandas},
+  emcee \citep{foreman13},
+  matplotlib \citep{hunter07},
+  astroplan \citep{astroplan2018},
+  astropy \citep{exoplanet:astropy13,exoplanet:astropy18},
+  exoplanet \citep{exoplanet:exoplanet},
+  numpy \citep{harris2020array},
+  scipy \citep{jones01},
+  ipython \citep{perez07},
+  bokeh \citep{bokehcite},
+  seaborn \citep{waskom14}}
+  %pytorch \citep{NEURIPS2019_9015}} % No pytorch yet!
+
+
+\bibliography{ms}
+
+
+\clearpage
+
+\appendix
+\restartappendixnumbering
+
+\section{Optional appendix} \label{appendix:tools}
+
+Place optional content here.
+\end{document}
