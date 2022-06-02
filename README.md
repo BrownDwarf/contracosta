@@ -12,3 +12,4 @@ Exploring wavelength dependent starspot contrast, now funded!
 ### Authors:
 - Michael Gully-Santiago (UT Austin, formerly Kepler/K2 GO Office)
 - Caroline Morley (UT Austin)
+- Ryan Hartung (UT Austin)
