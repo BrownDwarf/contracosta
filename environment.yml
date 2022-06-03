@@ -3,23 +3,20 @@ channels:
   - defaults
   - conda-forge
 dependencies:
-  - python=3.6
-  - numpy>=1.11
-  - scipy>=0.19.0
-  - matplotlib>=1.5.3
-  - astropy>=1.3
-  - astroquery>=0.3.7 # from conda-forge channel
+  - python=3.8
+  - numpy
+  - scipy
+  - matplotlib
+  - astropy
+  - astroquery # from conda-forge channel
   - beautifulsoup4
   - requests
-  - anaconda
   - tqdm
   - pandas
-  - oktopus # from conda-forge channel
-  - bokeh>=1.0 # optional, needed for interact
+  - bokeh # optional, needed for interact
   - jupyter # optional
   - ipython # optional
   - seaborn # optional
-  - photutils # optional, from conda-forge?
   - scikit-learn # optional
   - scikit-image # optional
   - pytest-cov # for documentation and testing
@@ -38,8 +35,10 @@ dependencies:
   - flake8
   - autopep8
   - pep8
+  - black
   - fast-histogram
-  - healpy # Needed for some starry functions
+  - specutils
+  - h5py
   - pip
   - pip:
     - twisted # optional
@@ -48,4 +47,6 @@ dependencies:
     - corner
     - emcee
     # - wget
-    - astroml_addons # optional
+    - celerite2
+    - exoplanet
+    - importlib_resources
