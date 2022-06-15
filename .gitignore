@@ -7,6 +7,8 @@ notebooks/09_deprecated/
 
 .ipynb_checkpoints
 
+*.gz
+
 proposals/TESS_GI_cycle02/final/*.pdf
 
 starry/
