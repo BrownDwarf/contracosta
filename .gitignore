@@ -2,6 +2,7 @@
 
 .DS_store
 proposals/deprecated
+proposals/TESS_GI_cycle04/expertise_and_resources_contrast_TESS_2021.pdf
 notebooks/09_deprecated/
 
 .ipynb_checkpoints
