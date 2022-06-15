@@ -1,8 +1,10 @@
 .envrc
 
-notebooks/
-
+.DS_store
 proposals/deprecated
+notebooks/09_deprecated/
+
+.ipynb_checkpoints
 
 proposals/TESS_GI_cycle02/final/*.pdf
 
@@ -12,3 +14,4 @@ proposals/TESS_GI_cycle04/2019_review/*.pdf
 proposals/TESS_GI_cycle04/final/*.pdf
 
 budgets/
+figures/
