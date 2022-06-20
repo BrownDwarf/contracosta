@@ -1,6 +1,8 @@
 \documentclass[modern]{aastex631}
 \bibliographystyle{aasjournal}
 
+%\turnoffedit
+
 % \usepackage{fontspec}
 % \usepackage[T1]{fontenc}
 % \usepackage{newtxsf}
@@ -13,8 +15,8 @@
 \begin{document}
 \shorttitle{Starspot contrast with TESS and K2}
 \shortauthors{TBD}
-\title{A systematic measurement on starspot contrast from TESS and K2 
-bandpass differences}
+\title{A systematic measurement on starspot contrast from TESS and K2
+  bandpass differences}
 
 \author{TBD}
 \affiliation{University of Texas at Austin Department of Astronomy}
@@ -25,7 +27,7 @@ bandpass differences}
 
 \begin{abstract}
 
-Abstract goes here.
+  Abstract goes here.
 
 \end{abstract}
 
@@ -38,7 +40,7 @@ Here is an annotated bibliography.
 \begin{deluxetable}{chc}
   \tablecaption{Annotated bibliography for intro\label{table1}}
   \tablehead{
-  \colhead{Reference} & \nocolhead{two} & \colhead{Key idea}
+    \colhead{Reference} & \nocolhead{two} & \colhead{Key idea}
   }
   \startdata
   \citet{gullysantiago17} & - & LkCa~4 starspot spectral decomposition\\
@@ -52,19 +54,64 @@ Here is an annotated bibliography.
 
 \section{Observations and Data Reduction}
 
-All sources were observed by both the K2 \citep{howell14} and TESS \citep{2015JATIS...1a4003R} missions. 
+All sources were observed by both the K2 \citep{howell14} and TESS \citep{2015JATIS...1a4003R} missions.
 
 \subsection{Sample selection}
-
 Our initial sample mirrors...
+Hello!
+
+\subsection{TESS pipelines}
+
+
+\subsection{Quality assurance checks}
+
+\subsubsection{Handling data gaps}
+
+\subsubsection{Handling multiple sectors}
+
+\subsubsection{Quality flags}
+
+\subsubsection{Outlier detection}
+
+\authorcomment1{Outliers attributable to instrumental artifacts}.
+
+\authorcomment1{Outliers attributable to flares}.
+
+\authorcomment2{Outliers attributable to exoplanets}.
+
+
+\section{Analysis}
+
+\subsection{Period measurement}
+
+\subsubsection{Amplitude measurements}
+
+\section{Results}
+
+\subsection{Amplitude versus rotation period for bins in $T_{\mathrm{eff}}$}
+
+\subsection{TESS-to-K2 amplitude ratio as a function of $T_{\mathrm{eff}}$}
+
+\subsection{Converting amplitude ratio to $T_{\mathrm{spot}}$}
+
+\subsection{Inferred $T_{\mathrm{spot}}$ versus $T_{\mathrm{eff}}$}
 
 
 
+\section{Discussion}
+
+\subsection{Comparison to other studies}
+\citet{2016MNRAS.463.2494F} targeted 304 Pleiades sources with LAMOST and found the $T_{\mathrm{spot}}$ scales with $T_{\mathrm{eff}}$ with figure.
+
+\subsection{Assessing the spots versus faculae}
+Up to the this point, we have assumed that all flux variations arise from dark spots on the surface of the star. Stars can just as likely have bright patches that cause flux perturbations to their light curves. Here we assess the consequences of assuming faculae instead of spots.
+
+\section{Conclusions}
 
 \begin{acknowledgements}
-This paper includes data collected by the TESS mission. Funding for the TESS mission is provided by the NASA's Science Mission Directorate.
+  This paper includes data collected by the TESS mission. Funding for the TESS mission is provided by the NASA's Science Mission Directorate.
 
-The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://www.tacc.utexas.edu}) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper.
+  The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://www.tacc.utexas.edu}) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper.
 \end{acknowledgements}
 
 \clearpage
@@ -83,7 +130,7 @@ The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://w
   ipython \citep{perez07},
   bokeh \citep{bokehcite},
   seaborn \citep{waskom14}}
-  %pytorch \citep{NEURIPS2019_9015}} % No pytorch yet!
+%pytorch \citep{NEURIPS2019_9015}} % No pytorch yet!
 
 
 \bibliography{ms}
