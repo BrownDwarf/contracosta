@@ -11,6 +11,8 @@
 \usepackage[caption=false]{subfig}
 \usepackage{censor}
 \usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
 
 \begin{document}
 \shorttitle{Starspot contrast with TESS and K2}
@@ -85,10 +87,20 @@ Hello!
 \subsection{Period measurement}
 
 \subsubsection{Amplitude measurements}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Comparison Between TESS and Kepler Amplitudes.png}
+  \end{figure}
 
 \section{Results}
 
 \subsection{Amplitude versus rotation period for bins in $T_{\mathrm{eff}}$}
+  % Helpful resource on how to insert and align images
+  % https://www.overleaf.com/learn/latex/Inserting_Images
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Amplitude vs. Rotation for Kepler and TESS.png}
+  \end{figure}
 
 \subsection{TESS-to-K2 amplitude ratio as a function of $T_{\mathrm{eff}}$}
 
