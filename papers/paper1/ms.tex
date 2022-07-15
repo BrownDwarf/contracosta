@@ -60,7 +60,6 @@ All sources were observed by both the K2 \citep{howell14} and TESS \citep{2015JA
 
 \subsection{Sample selection}
 Our initial sample mirrors...
-Hello!
 
 \subsection{TESS pipelines}
 
@@ -86,20 +85,32 @@ Hello!
 
 \subsection{Period measurement}
 
+
 \subsubsection{Amplitude measurements}
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{Comparison Between TESS and Kepler Amplitudes.png}
-  \end{figure}
 
-\section{Results}
+Using the rapid rotator sample, we compared the amplitudes of the TESS and Kepler missions. We created a mask that removes outliers exceeding predetermined limitations, as seen below.
 
-\subsection{Amplitude versus rotation period for bins in $T_{\mathrm{eff}}$}
+
   % Helpful resource on how to insert and align images
   % https://www.overleaf.com/learn/latex/Inserting_Images
   \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Amplitude vs. Rotation for Kepler and TESS.png}
+    \includegraphics[width=\linewidth]{Comparison Between TESS and Kepler Amplitudes.png}
+    \caption{Relationship between the calculated amplitudes of TESS and Kepler and how close they are to unity}
+  \end{figure}
+
+
+\section{Results}
+
+\subsection{Amplitude versus rotation period for bins in $T_{\mathrm{eff}}$}
+
+Using the rapid rotator sample, we compared the rotational periods of both missions versus their amplitudes. This graph proves that our hypothesis from our proposal was correct. We estimate that the Kepler data is approximately 73 bigger that the TESS data (average amplitudes of 9353 versus 128, respectively).
+
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Amplitude vs. Rotation for Kepler and TESS.png}
+    \caption{Comparison between the rotational period vs. amplitude for both TESS and Kepler.}
   \end{figure}
 
 \subsection{TESS-to-K2 amplitude ratio as a function of $T_{\mathrm{eff}}$}
