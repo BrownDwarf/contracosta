@@ -12,6 +12,8 @@
 \usepackage{censor}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage[section]{placeins}
 \graphicspath{{./figures/}}
 
 \begin{document}
@@ -88,32 +90,33 @@ Our initial sample mirrors...
 
 \subsubsection{Amplitude measurements}
 
-Using the rapid rotator sample, we compared the amplitudes of the TESS and Kepler missions. We created a mask that removes outliers exceeding predetermined limitations, as seen below.
+We compared the amplitudes of the TESS and Kepler spacecraft using the rapid rotator sample. As seen below, we developed a mask that eliminates outliers that beyond predefined boundaries. We decide to discard any points that exceed 80\% of the perfect correlation and points with over a 7 days period. The first requirement was decided because anything that differs by more than 80\%, in our opinion, most certainly the result of data fluctuations. Similarly, due to measurement errors, we have to exclude any periods longer than 7 days. The TESS mission only captured around 22 days worth of data for each object. We wanted to have at least 3 periods for each object.
 
 
   % Helpful resource on how to insert and align images
   % https://www.overleaf.com/learn/latex/Inserting_Images
-  \begin{figure}[h]
+  \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\linewidth]{Comparison Between TESS and Kepler Amplitudes.png}
+    \includegraphics[scale=0.8]{Comparison Between TESS and Kepler Amplitudes.png}
     \caption{Relationship between the calculated amplitudes of TESS and Kepler and how close they are to unity}
   \end{figure}
+  \FloatBarrier
 
 
 \section{Results}
 
 \subsection{Amplitude versus rotation period for bins in $T_{\mathrm{eff}}$}
 
-Using the rapid rotator sample, we compared the rotational periods of both missions versus their amplitudes. This graph proves that our hypothesis from our proposal was correct. We estimate that the Kepler data is approximately 73 bigger that the TESS data (average amplitudes of 9353 versus 128, respectively).
+\subsection{TESS-to-K2 amplitude ratio as a function of $T_{\mathrm{eff}}$}
 
+ As seen in the figure below, the Kepler data are, on average, around 70 times larger than TESS's.
 
-  \begin{figure}[h]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\linewidth]{Amplitude vs. Rotation for Kepler and TESS.png}
-    \caption{Comparison between the rotational period vs. amplitude for both TESS and Kepler.}
+    \caption{Comparison between the rotational period vs. amplitude for both TESS and Kepler. The Kepler and TESS averages are approximately 9350 and 130, respectively}
   \end{figure}
-
-\subsection{TESS-to-K2 amplitude ratio as a function of $T_{\mathrm{eff}}$}
+  \FloatBarrier
 
 \subsection{Converting amplitude ratio to $T_{\mathrm{spot}}$}
 
@@ -132,9 +135,9 @@ Up to the this point, we have assumed that all flux variations arise from dark s
 \section{Conclusions}
 
 \begin{acknowledgements}
-  This paper includes data collected by the TESS mission. Funding for the TESS mission is provided by the NASA's Science Mission Directorate.
+This paper includes data collected by the TESS mission. Funding for the TESS mission is provided by the NASA's Science Mission Directorate.
 
-  The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://www.tacc.utexas.edu}) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper.
+The authors acknowledge the Texas Advanced Computing Center (TACC, \url{http://www.tacc.utexas.edu}) at The University of Texas at Austin for providing HPC resources that have contributed to the research results reported within this paper.
 \end{acknowledgements}
 
 \clearpage
@@ -142,7 +145,8 @@ Up to the this point, we have assumed that all flux variations arise from dark s
 
 \facilities{Gemini:South, TESS, ASAS, Gaia}
 
-\software{  pandas \citep{mckinney10, reback2020pandas},
+\software{  
+  pandas \citep{mckinney10, reback2020pandas},
   emcee \citep{foreman13},
   matplotlib \citep{hunter07},
   astroplan \citep{astroplan2018},
