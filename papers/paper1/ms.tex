@@ -14,6 +14,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[section]{placeins}
+\usepackage{csquotes}
 \graphicspath{{./figures/}}
 
 \begin{document}
@@ -76,12 +77,23 @@ Our initial sample mirrors...
 
 \subsubsection{Outlier detection}
 
+At first, the lightcurve program was falsely calculating many periods due to possible instrumental artifacts, flares, exoplanets, and background noise. To mitigate these outliers, we first tried using the \enquote{remove\_nans} and \enquote{remove\_outliers} methods. This helped, but still left many artifacts. Next, we decided to limit the period calculation to a maximum of 10 days and a minimum of 0.1 days.
+
+After we finished extrapolating the data using the computer, we then developed several criteria by close inspection to further eliminate outliers. One such criterion was to discard any points that exceeded or subceeded 80\% of perfect correlation between the missions. and points with over a 7 days period. The first requirement was decided because anything that differs by more than 80\%, in our opinion, most certainly the result of data fluctuations. Similarly, we have to exclude any periods greater than 7 days due to TESS's time restraints. TESS only collected data for each object for around 22 days, so we set a 7-day maximum period to include 3 whole wavelengths.
+
+
 \authorcomment1{Outliers attributable to instrumental artifacts}.
 
 \authorcomment1{Outliers attributable to flares}.
 
 \authorcomment2{Outliers attributable to exoplanets}.
 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[scale=0.5]{Amplitude Comparison Mask.png}
+  \caption{The mask showing how we determined which points were outliers.}
+\end{figure}
+\FloatBarrier
 
 \section{Analysis}
 
@@ -89,8 +101,6 @@ Our initial sample mirrors...
 
 
 \subsubsection{Amplitude measurements}
-
-We compared the amplitudes of the TESS and Kepler spacecraft using the rapid rotator sample. As seen below, we developed a mask that eliminates outliers that beyond predefined boundaries. We decide to discard any points that exceed 80\% of the perfect correlation and points with over a 7 days period. The first requirement was decided because anything that differs by more than 80\%, in our opinion, most certainly the result of data fluctuations. Similarly, due to measurement errors, we have to exclude any periods longer than 7 days. The TESS mission only captured around 22 days worth of data for each object. We wanted to have at least 3 periods for each object.
 
 
   % Helpful resource on how to insert and align images
