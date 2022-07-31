@@ -77,25 +77,25 @@ The prevailing assumption within the exoplanet community has been that starspot 
     \colhead{Reference} & \nocolhead{two} & \colhead{Key idea}
   }
   \startdata
-  \citet{gullysantiago17} & - & LkCa~4 starspot spectral decomposition\\
+  \citet{2015MNRAS.450.3211A} & - & Using Kepler to study stellar rotation \\
+  \citet{2022ApJ...924...31B} & - & Estimating the lifetime of starspots based on rotational periods \\
+  \citet{2010ApJ...713L.109B} & - & Why Kepler picked particular stars for observation \\
+  \citet{2010Sci...327..977B} & - & Using the Kepler mission to discover exoplanets \\
+  \citet{2021sf2a.conf..363B} & - & Stellar rotation using ROOSTER \\
+  \citet{2022ApJ...927..219C} & - & Deep learning to recover TESS light curves \\
+  \citet{2022ApJ...925..185D} & - & Lightcurves for oblate, rapid rotators \\
+  \citet{2017ARep...61..122D} & - & Using Kepler to observe starspots on M dwarf stars \\
+  \citet{2020RAA....20..167F} & - & Overview of Kepler mission \\
+  \citet{gullysantiago17} & - & LkCa~4 starspot spectral decomposition \\
+  \citet{Kochukhov21} & - & Magnetic fields of M dwarfs \\
+  \citet{2021AJ....162..123L} & - & Test Lightcurve and study stellar surfaces \\
+  \citet{2022ApJ...933..195M} & - & Comparing rotational periods of sun-like stars versus photometric amplitude \\
+  \citet{2020MNRAS.491.2706N} & - & Calculating stellar age based on starspot covering fraction \\
+  \citet{2018ApJ...853..122R} & - & TLSE \\
+  \citet{Reinhold2013} & - & Measure rotation of active Kepler Stars \\
   \citet{2015ApJ...807..174S} & - & Radius inflation from spots \\
   Strassmeier & - & Starspots review \\
-  \citet{2018ApJ...853..122R} & - & TLSE \\
-  \citet{Kochukhov21} & - & Magnetic fields of M dwarfs \\
-  \citet{2021sf2a.conf..363B} & - & Stellar rotation using ROOSTER \\
-  \citet{2015MNRAS.450.3211A} & - & Using Kepler to study stellar rotation \\
-  \citet{2022ApJ...927..219C} & - & Using deep learning to recover TESS light curves \\
-  \citet{2021AJ....162..123L} & - & Test Lightcurve and study stellar surfaces \\
-  \citet{2022ApJ...925..185D} & - & Lightcurves for oblate, rapid rotators \\
-  \citet{Reinhold2013} & - & Measure rotation of active Kepler Stars \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\
-  % \citet{} & - & \\  
+  \citet{2022MNRAS.511.2285W} & - & Starspots on detached eclipsing binaries (DEBs) \\
   \enddata
 \end{deluxetable*}
 
@@ -132,11 +132,11 @@ After we finished extrapolating the data using the computer, we then developed s
 
 \authorcomment2{Outliers attributable to exoplanets}.
 
-\begin{figure*}[!htb]
+\begin{figure}[!htb]
   \centering
-  \includegraphics[scale=0.5]{Amplitude Comparison Mask.png}
+  \includegraphics[width=0.5\textwidth]{Amplitude Comparison Mask.png}
   \caption{The mask showing how we determined which points to keep and which ones were outliers.}
-\end{figure*}
+\end{figure}
 \FloatBarrier
 
 \section{Analysis}
@@ -171,8 +171,6 @@ $$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.1}{1-0.025}  = (0.9/0.975)=0.923$$
 
 $$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.104}{1-0.00697}  = (0.896/0.99303)=0.902$$
 
-% TESS - 0.104
-% Kepler - 0.00697
 
 This equation is approximate, and in practice our team will derive $\mathcal{R}= \frac{c_{\tess}}{c_{\ktwo}}$ with Monte Carlo methods to take into account the uncertainty of the amplitude determination and subtle starspot self-dilution effects.
 \newline
@@ -204,13 +202,14 @@ The fact that observations are not contemporaneous adds some \emph{cosmic varian
 \subsection{Starspot contrast theory}
 Tbd...
 
-\begin{figure}
-  \gridline{\fig{figures/Kepler_contrast.png}{0.3\textwidth}{(a)}}
-  \gridline{\fig{figures/TESS_contrast.png}{0.3\textwidth}{(b)}}
-  \gridline{\fig{one_minus_ratio.png}{0.3\textwidth}{(c)}}
+\begin{figure*}
+  \gridline
+    {\fig{figures/Kepler_contrast.png}{0.3\textwidth}{(a)}
+    {\fig{figures/TESS_contrast.png}{0.3\textwidth}{(b)}}
+    {\fig{one_minus_ratio.png}{0.3\textwidth}{(c)}}}
   \caption{A nice inverted pyramid figure
     consisting of six individual files}
-\end{figure}
+\end{figure*}
 
 \section{Results}
 
