@@ -64,6 +64,12 @@
 
 \section{Introduction}\label{sec:intro}
 
+\authorcomment1{General background information and motivation for starspots...}
+
+The simplest observational predictors of starspot physical properties appear to be effective temperature (\emph{i.e} spectral type, mass, and/or evolutionary state) and rotation rate (\emph{i.e.} Rossby number).  Theese terms apparently control the conditions that give rise to spots \censorbox{Cite Mayukh Panja papers}.
+
+Disentangling starspot contrast and area is challenging, since many observables produce degeneracies among these two distinct physical properties.  For example, a given flux loss in a monochromatic time series lightcurve can indicate a large warm starspot or or a small cool starspot.
+
 The diminution of flux arising from occultations of the stellar disk contains information the relative sizes of the occulting bodies.  A commonsense exoplanet heuristic dictates that the relative transit depth $D$ equals the ratio of the bodies' projected areas ($R_p^2/R_\star^2$).  Additional correction factors account for limb darkening \citep{2002ApJ...580L.171M}.  Starspots on a stellar surface can exhibit spatial segregations
 that yield \emph{unocculted starspots}: spots that are present on the surface but are not traversed during transits.  These unocculted starspots confound the mapping of transit depth to planet radius: a planet ``looks bigger'' than it really is if it blocks the brighter-on-average flux of the stellar disk \citep{2018AJ....156...91M}.  You cannot measure a planet radius without making some assumptions about the extent, contrast, and distribution of starspots.
 
@@ -96,17 +102,34 @@ The prevailing assumption within the exoplanet community has been that starspot 
   \citet{2015ApJ...807..174S} & - & Radius inflation from spots \\
   Strassmeier & - & Starspots review \\
   \citet{2022MNRAS.511.2285W} & - & Starspots on detached eclipsing binaries (DEBs) \\
+  Mayukh Panja & What do starspots look like \\
   \enddata
 \end{deluxetable*}
 
 
 \section{Methodology}
-\subsection{Starspot Temperature Theory}
-We adopt the starspot temperature relationship from \citet{2005LRSP....2....8B} as parameterized in \citet{2019AJ....157...96R}
+
+\subsection{Starspot contrast and temperature}
+There does not appear to be a first-principles theoretical prediction for the spectrum of a starspot, as a function of the physical state of the star.  Instead, practitioners have come up with phenomenological models based on observed trends in spot contrast coupled with ostensibly commonsense heuristics.  Most practitioners assume that starspot temperature depends principally on the photospheric temperature.  Two sources provide similar but slightly different trends for this relationship.  \citet{2019AJ....157...96R} distilled the compilation of spot temperatures from \citet{2005LRSP....2....8B} into a simple first order linear relationship:
 \begin{equation}
-  T_{\mathrm{spot}} = 0.418 \times T_{\mathrm{phot}} + 1620~\mathrm{K},
+  T_{\mathrm{spot}} = 0.418 \times T_{\mathrm{phot}} + 1620~\mathrm{K}
   \label{eq:Tspot}
-  \end{equation}
+\end{equation}
+
+\citet{2016MNRAS.463.2494F} report an ostensibly quadratic dependence on the ambient photosphere, with hot stars asympoting to a typical starspot temperature of $\sim3500~\mathrm{K}$.  This departure from the linear trend could encode an observational bias since the LAMOST TiO-based technique may lack sensitivity to hypotetical hotter spots.  Nevertheless the trend serves as a useful guide in the absence of more, and higher quality, data.  Here we fit a quadratic relationship to the \citet{2016MNRAS.463.2494F} LAMOST-derived temperature points to obtain the relationship:
+\authorcomment1{Ryan H. to determine A, B, and C}.
+
+\begin{equation}
+  T_{\mathrm{spot}} = a \times T_{\mathrm{phot}}^2 + b \times T_{\mathrm{phot}} + c ~\mathrm{K}
+  \label{eq:TspotFang}
+\end{equation}
+
+\authorcomment1{Todo: Cite Lyra Cao et al. in prep-- estimated August 2022}.
+
+We plot both trends in Figure \censorbox{X}.  The range of validity and accuracy of these relationships remain unclear. Interrogating these trends forms the main thrust of this work.
+
+\subsection{Starspot contrast from Kepler and TESS}
+A typical starspot
 
 \section{Observations and Data Reduction}
 
@@ -211,7 +234,7 @@ Tbd...
 
 \begin{figure*}
   \gridline
-    {\fig{figures/Kepler_contrast.png}{0.3\textwidth}{(a)}
+  {\fig{figures/Kepler_contrast.png}{0.3\textwidth}{(a)}
     {\fig{figures/TESS_contrast.png}{0.3\textwidth}{(b)}}
     {\fig{one_minus_ratio.png}{0.3\textwidth}{(c)}}}
   \caption{A nice inverted pyramid figure
