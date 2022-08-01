@@ -109,14 +109,16 @@ The prevailing assumption within the exoplanet community has been that starspot 
 
 \section{Methodology}
 
-\subsection{Starspot contrast and temperature}
-There does not appear to be a first-principles theoretical prediction for the spectrum of a starspot, as a function of the physical state of the star.  Instead, practitioners have come up with phenomenological models based on observed trends in spot contrast coupled with ostensibly commonsense heuristics.  Most practitioners assume that starspot temperature depends principally on the photospheric temperature.  Two sources provide similar but slightly different trends for this relationship.  \citet{2019AJ....157...96R} distilled the compilation of spot temperatures from \citet{2005LRSP....2....8B} into a simple first order linear relationship:
+\subsection{Starspot contrast}
+Starspots emit light, which is often parameterized as spot contrast, $c$, where $0$ means the spots are completely black compared to the bright photosphere, and $c=0.3$ means the spot has 30\% the flux per-unit-surface-area of the pristine photosphere.  Hypothetically, a contrast of unity would mean the starspot blends into ambient photosphere, its border vanishing entirely.  Spot contrast is wavelength dependent ($c_\lambda$). It has a spectrum of its own, starting close to zero in the blue/visible, and approaching perhaps 40\% in the near-IR.
+
+There does not appear to be a first-principles theoretical prediction for the spectrum of a starspot as a function of the fundamental properties of the star.  Instead, practitioners have come up with phenomenological models based on observed trends in spot contrast coupled with ostensibly commonsense heuristics.  For example, most practitioners assume that starspot temperature depends principally on the photospheric temperature.  Two sources provide similar but slightly different trends for this relationship.  \citet{2019AJ....157...96R} distilled the compilation of spot temperatures from \citet{2005LRSP....2....8B} into a simple first order linear relationship:
 \begin{equation}
   T_{\mathrm{spot}} = 0.418 \times T_{\mathrm{phot}} + 1620~\mathrm{K}
   \label{eq:Tspot}
 \end{equation}
 
-\citet{2016MNRAS.463.2494F} report an ostensibly quadratic dependence on the ambient photosphere, with hot stars asympoting to a typical starspot temperature of $\sim3500~\mathrm{K}$.  This departure from the linear trend could encode an observational bias since the LAMOST TiO-based technique may lack sensitivity to hypotetical hotter spots.  Nevertheless the trend serves as a useful guide in the absence of more, and higher quality, data.  Here we fit a quadratic relationship to the \citet{2016MNRAS.463.2494F} LAMOST-derived temperature points to obtain the relationship:
+\citet{2016MNRAS.463.2494F} report an ostensibly quadratic dependence on the ambient photosphere, with hot stars asympoting to a typical starspot temperature of $\sim3500~\mathrm{K}$.  This departure from the linear trend could be real, or may encode an observational bias since the LAMOST TiO-based technique may lack sensitivity to hypotetical hotter spots.  Nevertheless the trend serves as a useful guide in the absence of more, and higher quality, data.  Here we fit a quadratic relationship to the \citet{2016MNRAS.463.2494F} LAMOST-derived temperature points to obtain the relationship:
 \authorcomment1{Ryan H. to determine A, B, and C}.
 
 \begin{equation}
@@ -127,6 +129,41 @@ There does not appear to be a first-principles theoretical prediction for the sp
 \authorcomment1{Todo: Cite Lyra Cao et al. in prep-- estimated August 2022}.
 
 We plot both trends in Figure \censorbox{X}.  The range of validity and accuracy of these relationships remain unclear. Interrogating these trends forms the main thrust of this work.
+
+
+Starspot flux can be parameterized by labeling the emission components with a characteristic temperatures
+$T_\mathrm{spot}<T_\mathrm{phot}$.The spot and ambient photosphere spectra depend only on those temperatures: $S(T_\mathrm{spot})$ and $S(T_\mathrm{phot})$.  The wavelength-dependent spot contrast is then simply the ratio of the spot spectrum to the ambient photosphere spectrum:  $c_\lambda = \frac{S(T_\mathrm{spot})}{ S(T_\mathrm{phot})}$.
+
+\begin{figure*}[hbt!]
+  \includegraphics[width=0.95\textwidth]{figures/contrast_spectrum2.pdf}
+  \caption{Illustration of starspot contrast as seen in \tess\ and \kepler. The red shaded spectrum illustrates the contrast for an M0V spectral type for a choice of spot and ambient photospheric temperatures. The thick blue left-most curve illustrates the \kepler\ passband, the thick green line to its right illustrates the \tess\ passband centered near 850 nm.  A lower number means darker spots.  }
+  \label{fig:filtercurve}
+\end{figure*}
+
+Figure \ref{fig:filtercurve} shows an illustration of wavelength dependent spot contrast for a hypothetical K star with $T_\mathrm{phot}=4500\;$K, and with $T_\mathrm{spot}=2700\;$K.  We employ \texttt{PHOENIX} synthetic spectral models \cite{2013A&A...553A...6H}, accessed at these temperatures.  The contrast ascends from near 0.01 at $\lambda=500\;$nm, to 0.15 at 1 $\mu$m.  By 2.3 $\mu$m, the contrast has peaked at 0.3.  The overlapping \kepler\ and \tess\ system throughputs overplotted on Figure \ref{fig:filtercurve} indicate that---on average---the starspot contrast is a lower number in the \kepler passband ($\lambda \sim 550\;$nm)  than for the redder \tess passband ($\lambda \sim 850\;$nm).  Starspots look blacker in \kepler\ and \ktwo\ than they do in \tess.  The understanding of wavelength dependent starspot contrast is not novel--- it has driven the design of precision radial velocity (PRV) spectrographs to the near-IR, where the deleterious effect of starspots on RV jitter is lessened.  The key innovation of this proposal stems from the vast number of sources with existing \ktwo\ data that \tess\ will observe in Cycle 4.  This proposal aims to quantify precisely the starspot contrast differences between the \tess\ and \kepler\ wavelength bands.  We re-iterate that the extent to which nature produces starspot spectra resembling the prescription in Figure \ref{fig:filtercurve} remains an unknown, and is the main thrust of the proposed work effort.
+
+
+System-throughput-weighted contrast spectra can be integrated over the illustrated filter curves to yield precision estimates for contrasts in the two passbands. For this M0V example, we obtain $c_{\ktwo}\sim0.025$ and $c_{\tess}\sim0.1$. Starspots appear about four times darker in \kepler\ and \ktwo\ than they do in \tess. We define the ratio of starspot contrasts of \tess\ compared to \kepler\ as $\mathcal{R}\equiv \frac{c_{\tess}}{c_{\ktwo}}$.
+
+\noindent \textbf{Spot-induced modulation amplitudes depend on contrast.}
+
+Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk. The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum. The amplitude of the lightcurve, therefore, is approximately the difference in starspot coverage fractions $\Delta f_{spot} \equiv f_{max}-f_{min}$ between the most-and-least spotted projected hemispheres, weighted by the spot contrast: $ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$. Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint independent of the actual spot coverage fraction:
+
+$$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} $$
+
+For our example with a 4500 K ambient photosphere and 2700 K starspot characteristic temperature, we obtained $c_{\ktwo}\sim0.025$ and $c_{\tess}\sim0.1$, yielding an expected amplitude ratio of:
+
+$$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.1}{1-0.025}  = (0.9/0.975)=0.923$$
+
+\authorcomment1{We are not currently weighting by the TESS and K2 filter curves.  Here are the values we get when we take the mean:}
+
+$$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.104}{1-0.00697}  = (0.896/0.99303)=0.902$$
+
+
+This equation is approximate, and in practice our team will derive $\mathcal{R}= \frac{c_{\tess}}{c_{\ktwo}}$ with Monte Carlo methods to take into account the uncertainty of the amplitude determination and subtle starspot self-dilution effects.
+
+
+
 
 \subsection{Starspot contrast from Kepler and TESS}
 A typical starspot
@@ -170,40 +207,6 @@ After we finished extrapolating the data using the computer, we then developed s
 \FloatBarrier
 
 \section{Analysis}
-
-Starspots emit light, which is often parameterized as \emph{spot contrast}, $c$, where $0$ means the spots are completely black compared to the bright photosphere, and $c=0.3$ means the spot has 30\% the flux per-unit-surface-area of the pristine photosphere.  Hypothetically, a contrast of unity would mean the starspot blends into ambient photosphere, its border vanishing entirely.  Spot contrast is wavelength dependent ($c_\lambda$). It has a spectrum of its own, starting close to zero in the blue/visible, and approaching perhaps 40\% in the near-IR; the exact prescription remains an active research area \cite{2005LRSP....2....8B}.  Zeeman splitting and other magnetic phenomena are secondary to the mere fact that starspots appear as cooler-than-average regions on the stellar surface.
-
-Starspot flux can be parameterized by labeling the emission components with a characteristic temperatures
-$T_\mathrm{spot}<T_\mathrm{phot}$.The spot and ambient photosphere spectra depend only on those temperatures: $S(T_\mathrm{spot})$ and $S(T_\mathrm{phot})$.  The wavelength-dependent spot contrast is then simply the ratio of the spot spectrum to the ambient photosphere spectrum:  $c_\lambda = \frac{S(T_\mathrm{spot})}{ S(T_\mathrm{phot})}$.
-
-\begin{figure*}[hbt!]
-  \includegraphics[width=0.95\textwidth]{figures/contrast_spectrum2.pdf}
-  \caption{Illustration of starspot contrast as seen in \tess\ and \kepler. The red shaded spectrum illustrates the contrast for an M0V spectral type for a choice of spot and ambient photospheric temperatures. The thick blue left-most curve illustrates the \kepler\ passband, the thick green line to its right illustrates the \tess\ passband centered near 850 nm.  A lower number means darker spots.  }
-  \label{fig:filtercurve}
-\end{figure*}
-
-Figure \ref{fig:filtercurve} shows an illustration of wavelength dependent spot contrast for a hypothetical K star with $T_\mathrm{phot}=4500\;$K, and with $T_\mathrm{spot}=2700\;$K.  We employ \texttt{PHOENIX} synthetic spectral models \cite{2013A&A...553A...6H}, accessed at these temperatures.  The contrast ascends from near 0.01 at $\lambda=500\;$nm, to 0.15 at 1 $\mu$m.  By 2.3 $\mu$m, the contrast has peaked at 0.3.  The overlapping \kepler\ and \tess\ system throughputs overplotted on Figure \ref{fig:filtercurve} indicate that---on average---the starspot contrast is a lower number in the \kepler passband ($\lambda \sim 550\;$nm)  than for the redder \tess passband ($\lambda \sim 850\;$nm).  Starspots look blacker in \kepler\ and \ktwo\ than they do in \tess.  The understanding of wavelength dependent starspot contrast is not novel--- it has driven the design of precision radial velocity (PRV) spectrographs to the near-IR, where the deleterious effect of starspots on RV jitter is lessened.  The key innovation of this proposal stems from the vast number of sources with existing \ktwo\ data that \tess\ will observe in Cycle 4.  This proposal aims to quantify precisely the starspot contrast differences between the \tess\ and \kepler\ wavelength bands.  We re-iterate that the extent to which nature produces starspot spectra resembling the prescription in Figure \ref{fig:filtercurve} remains an unknown, and is the main thrust of the proposed work effort.
-
-
-System-throughput-weighted contrast spectra can be integrated over the illustrated filter curves to yield precision estimates for contrasts in the two passbands. For this M0V example, we obtain $c_{\ktwo}\sim0.025$ and $c_{\tess}\sim0.1$. Starspots appear about four times darker in \kepler\ and \ktwo\ than they do in \tess. We define the ratio of starspot contrasts of \tess\ compared to \kepler\ as $\mathcal{R}\equiv \frac{c_{\tess}}{c_{\ktwo}}$.
-
-\noindent \textbf{Spot-induced modulation amplitudes depend on contrast.}
-
-Rotationally-modulated lightcurves exhibit semi-sinusoidal undulations as starspots (or spot groups) enter and exit the projected stellar disk. The most-spotted projected hemisphere is directed towards the observer at the moment of the lightcurve minimum, and the least-spotted projected hemisphere at lightcurve maximum. The amplitude of the lightcurve, therefore, is approximately the difference in starspot coverage fractions $\Delta f_{spot} \equiv f_{max}-f_{min}$ between the most-and-least spotted projected hemispheres, weighted by the spot contrast: $ A_\lambda = \Delta f_{spot} \cdot (1-c_\lambda)$. Therefore the ratio of \tess\ to \kepler\ amplitudes yields a constraint independent of the actual spot coverage fraction:
-
-$$ \frac{A_{TESS}}{A_{Kepler}} = \cancel{\frac{\Delta f_{spot}}{\Delta f_{spot}}} \cdot \frac{1-c_{TESS}}{1-c_{Kepler}} $$
-
-For our example with a 4500 K ambient photosphere and 2700 K starspot characteristic temperature, we obtained $c_{\ktwo}\sim0.025$ and $c_{\tess}\sim0.1$, yielding an expected amplitude ratio of:
-
-$$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.1}{1-0.025}  = (0.9/0.975)=0.923$$
-
-\authorcomment1{We are not currently weighting by the TESS and K2 filter curves.  Here are the values we get when we take the mean:}
-
-$$\frac{1-c_{TESS}}{1-c_{Kepler}} = \frac{1-0.104}{1-0.00697}  = (0.896/0.99303)=0.902$$
-
-
-This equation is approximate, and in practice our team will derive $\mathcal{R}= \frac{c_{\tess}}{c_{\ktwo}}$ with Monte Carlo methods to take into account the uncertainty of the amplitude determination and subtle starspot self-dilution effects.
-\newline
 
 \noindent \textbf{Head-to-head comparison of K2 and TESS amplitudes in the ecliptic fields}
 
