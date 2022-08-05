@@ -110,16 +110,18 @@ The prevailing assumption within the exoplanet community has been that starspot 
 \section{Methodology}
 
 \subsection{Starspot contrast}
-Starspots emit light, which is often parameterized as spot contrast, $c$, where $0$ means the spots are completely black compared to the bright photosphere, and $c=0.3$ means the spot has 30\% the flux per-unit-surface-area of the pristine photosphere.  Hypothetically, a contrast of unity would mean the starspot blends into ambient photosphere, its border vanishing entirely.  Spot contrast is wavelength dependent ($c_\lambda$). It has a spectrum of its own, starting close to zero in the blue/visible, and approaching perhaps 40\% in the near-IR.
+Starspots emit light, which is often parameterized as spot contrast, $c$, where $0$ means the spots are completely black compared to the bright photosphere, and $c=0.3$ means the spot has 30\% the flux per-unit-surface-area of the pristine photosphere.  Hypothetically, a contrast of unity would mean the starspot blends into ambient photosphere, its border vanishing entirely.
 
-There does not appear to be a first-principles theoretical prediction for the spectrum of a starspot as a function of the fundamental properties of the star.  Instead, practitioners have come up with phenomenological models based on observed trends in spot contrast coupled with ostensibly commonsense heuristics.  For example, most practitioners assume that starspot temperature depends principally on the photospheric temperature.  Two sources provide similar but slightly different trends for this relationship.  \citet{2019AJ....157...96R} distilled the compilation of spot temperatures from \citet{2005LRSP....2....8B} into a simple first order linear relationship:
+Spot contrast is wavelength dependent ($c_\lambda$).  There does not appear to be a first-principles theoretical prediction for the spectrum of a starspot as a function of the fundamental properties of the star.  Arriving at such a theoretical relationship may be complicated.  Instead, practitioners have come up with phenomenological models based on observed trends in spot contrast.  Starspot flux is typically parameterized by labeling the emission components with a characteristic temperatures
+$T_\mathrm{spot}<T_\mathrm{phot}$.  The spot spectrum depends primarily on that temperature: $S(T_\mathrm{spot})$, with additional minor correction terms for Zeeman broadening largely ignored for most applications possessing only low fidelity information of the spot spectrum.  The wavelength-dependent spot contrast is then simply the ratio of the spot spectrum to the ambient photosphere spectrum:  $c_\lambda = \frac{S(T_\mathrm{spot})}{ S(T_\mathrm{phot})}$.
+
+Two sources provide similar but slightly different trends for this relationship.  \citet{2019AJ....157...96R} distilled the compilation of spot temperatures from \citet{2005LRSP....2....8B} into a simple first order linear relationship:
 \begin{equation}
   T_{\mathrm{spot}} = 0.418 \times T_{\mathrm{phot}} + 1620~\mathrm{K}
   \label{eq:Tspot}
 \end{equation}
 
 \citet{2016MNRAS.463.2494F} report an ostensibly quadratic dependence on the ambient photosphere, with hot stars asympoting to a typical starspot temperature of $\sim3500~\mathrm{K}$.  This departure from the linear trend could be real, or may encode an observational bias since the LAMOST TiO-based technique may lack sensitivity to hypotetical hotter spots.  Nevertheless the trend serves as a useful guide in the absence of more, and higher quality, data.  Here we fit a quadratic relationship to the \citet{2016MNRAS.463.2494F} LAMOST-derived temperature points to obtain the relationship:
-\authorcomment1{Ryan H. to determine A, B, and C}.
 
 \begin{equation}
   T_{\mathrm{spot}} = 0.000117 \times T_{\mathrm{phot}}^2 + 1.37 \times T_{\mathrm{phot}} - 568 ~\mathrm{K}
@@ -128,11 +130,10 @@ There does not appear to be a first-principles theoretical prediction for the sp
 
 \authorcomment1{Todo: Cite Lyra Cao et al. in prep-- estimated August 2022}.
 
-We plot both trends in Figure \censorbox{X}.  The range of validity and accuracy of these relationships remain unclear. Interrogating these trends forms the main thrust of this work.
+The range of validity and accuracy of these relationships remain unclear.
 
 
-Starspot flux can be parameterized by labeling the emission components with a characteristic temperatures
-$T_\mathrm{spot}<T_\mathrm{phot}$.The spot and ambient photosphere spectra depend only on those temperatures: $S(T_\mathrm{spot})$ and $S(T_\mathrm{phot})$.  The wavelength-dependent spot contrast is then simply the ratio of the spot spectrum to the ambient photosphere spectrum:  $c_\lambda = \frac{S(T_\mathrm{spot})}{ S(T_\mathrm{phot})}$.
+
 
 \begin{figure*}[hbt!]
   \includegraphics[width=0.95\textwidth]{figures/contrast_spectrum2.pdf}
