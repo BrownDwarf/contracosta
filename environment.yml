@@ -50,3 +50,4 @@ dependencies:
     - celerite2
     - exoplanet
     - importlib_resources
+    - fleck
