@@ -51,4 +51,3 @@ dependencies:
     - exoplanet
     - importlib_resources
     - fleck
-    - batman-package
